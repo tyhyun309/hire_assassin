@@ -1,4 +1,7 @@
 <h1>All Assassins</h1>
+<% if @assassin.photo.attached %>
+  <%= cl_image_tag @assassin.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <ul>
   <% @assassins.each do |assassin| %>
     <li><%= assassin.name %></li>

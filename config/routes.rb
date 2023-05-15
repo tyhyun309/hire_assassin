@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get 'assassins', to: 'assassins#index'
-  get 'assassins/:id', to: 'assassins#show'
-  get 'assassins/:id/edit', to: 'assassins#edit'
+  get 'assassins/:id', to: 'assassins#show', as: :show
+  get 'assassins/:id/edit', to: 'assassins#edit', as: :edit
   patch 'assassins/:id', to: 'assassins#update'
 end

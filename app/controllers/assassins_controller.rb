@@ -1,4 +1,5 @@
 class AssassinsController < ApplicationController
+
   def index
     @assassins = Assassin.all
   end
@@ -14,6 +15,10 @@ class AssassinsController < ApplicationController
   def update
     @assassin = Assassin.find(params[:id])
     @assassin.update(params[:assassin])
-    redirect_to assassin_path(@assassin)
+    redirect_to assassins_path
+  end
+
+  def assassin_params
+    params.require(:assassin).permit(:photo)
   end
 end
