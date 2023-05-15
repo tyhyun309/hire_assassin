@@ -14,8 +14,8 @@ class AssassinsController < ApplicationController
 
   def update
     @assassin = Assassin.find(params[:id])
-    @assassin.update(params[:assassin])
-    redirect_to assassins_path
+    @assassin.update(assassin_params)
+    redirect_to assassin_path(:assassin)
   end
 
   def assassin_params

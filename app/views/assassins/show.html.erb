@@ -1,4 +1,6 @@
-<h2><%= @assassin.name %></h2>
-<h3><%= @assassin.weapon %></h3>
-<h3><%= @assassin.price %>bitcoin(s)💰</h3>
-<p><%= @assassin.description %></p>
+<h2>Name: <%= @assassin.name %></h2>
+<h3>Weapon : <%= @assassin.weapon %></h3>
+<h3>Rate: <%= @assassin.price %>bitcoin(s)💰</h3>
+<p>Some random thing about <%= @assassin.name %> : <br>
+  <%= @assassin.description %></p>
+<%= cl_image_tag @assassin.photo.key, height: 300, width: 400, crop: :fill %>

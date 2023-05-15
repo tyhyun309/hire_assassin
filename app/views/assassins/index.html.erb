@@ -1,11 +1,9 @@
 <h1>All Assassins</h1>
-<% if @assassin.photo.attached %>
-  <%= cl_image_tag @assassin.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
 <ul>
   <% @assassins.each do |assassin| %>
     <li><%= assassin.name %></li>
     <li><%= assassin.weapon %></li>
-    <li><%= assassin.photo %></li>
+    <li><%= cl_image_tag assassin.photo.key, height: 200, width: 300, crop: :fill %></li>
+    <%= link_to "See More", assassin_path(assassin) %>
   <% end %>
 </ul>
