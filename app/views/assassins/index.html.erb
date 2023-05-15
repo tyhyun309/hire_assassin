@@ -1,0 +1,8 @@
+<h1>All Assassins</h1>
+<ul>
+  <% @assassins.each do |assassin| %>
+    <li><%= assassin.name %></li>
+    <li><%= assassin.weapon %></li>
+    <li><%= assassin.photo %></li>
+  <% end %>
+</ul>
