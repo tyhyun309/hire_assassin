@@ -3,6 +3,7 @@
   <% @assassins.each do |assassin| %>
     <li><%= assassin.name %></li>
     <li><%= assassin.weapon %></li>
-    <li><%= assassin.photo %></li>
+    <li><%= cl_image_tag assassin.photo.key, height: 200, width: 300, crop: :fill %></li>
+    <%= link_to "See More", assassin_path(assassin) %>
   <% end %>
 </ul>
