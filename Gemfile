@@ -30,6 +30,7 @@ gem "jbuilder"
 # Added manually
 gem "devise"
 gem "pundit"
+gem "faker"
 
 gem "cloudinary"
 
