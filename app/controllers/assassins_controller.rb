@@ -1,7 +1,7 @@
 class AssassinsController < ApplicationController
 
   def index
-    @assassins = Assassin.all
+    @assassins = policy_scope(Assassin)
   end
 
   def show
