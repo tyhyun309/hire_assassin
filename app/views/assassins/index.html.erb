@@ -1,9 +1,18 @@
-<h1>All Assassins</h1>
-<ul>
-  <% @assassins.each do |assassin| %>
-    <li><%= assassin.name %></li>
-    <li><%= assassin.weapon %></li>
-    <li><%= cl_image_tag assassin.photo.key, height: 200, width: 300, crop: :fill %></li>
-    <%= link_to "See More", assassin_path(assassin) %>
-  <% end %>
-</ul>
+<div class="container" style="width:80%">
+  <h1>All Assassins</h1>
+  <div class="cards">
+    <% @assassins.each do |assassin| %>
+      <div class="row">
+        <div class="card-product col-3">
+          <div class="card-product-infos">
+            <img class src="https://res.cloudinary.com/dfdergjip/image/upload/v1684161888/development/r4u4dt7r0dtgykuq78ow9b67n06y.jpg" alt="Card image cap">
+            <%#= cl_image_tag @assassin.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+            <h2><%= assassin.name %></h2>
+            <p><%= assassin.weapon %></p>
+            <%= link_to "See More", assassin_path(assassin), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
