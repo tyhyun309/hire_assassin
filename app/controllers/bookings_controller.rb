@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:create, :update]
   # User can see all of their bookings
   def index
-    @bookings = Bookings.all
+    @bookings = Booking.all
     # ? Does device do this auotmatically? Fix this tomorrow.
   end
 

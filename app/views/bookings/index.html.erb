@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>My Pending Bookings</h1>
+  <table class="table table-striped">
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %>ID</td>
+          <td><%= booking.client_name %>Client Name</td>
+          <td><%= booking.status %>Action</td>
+          <td>
+            <%= link_to 'Accept', accept_booking_path(booking), class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h1>My Active Bookings</h1>
+  <table class="table table-striped">
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %>ID</td>
+          <td><%= booking.client_name %>Client Name</td>
+          <td><%= booking.status %>Status</td>
+          <td>
+            <%= link_to 'Mark as Complete', complete_booking_path(booking), class: 'btn btn-success' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h1>My Completed Bookings</h1>
+  <table class="table table-striped">
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %>ID</td>
+          <td><%= booking.client_name %>Client Name</td>
+          <td><%= booking.status %>Status</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
