@@ -6,16 +6,25 @@ require 'csv'
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+filepath = "db/seeds/Assassins Wagon Seed.csv"
+
 puts "Cleaning database..."
-
 Assassin.destroy_all
+User.destroy_all
 
-# user = User.create(
-#   name: 'lewagon',
-#   email: 'le@wagon.com',
-#   password: 'secret'
-# )
+puts "Creating Test User"
 
+User.create(
+  name: 'lewagon',
+  email: 'le@wagon.com',
+  password: 'secret'
+)
+
+user = User.create(
+  name: 'user',
+  email: 'user@wagon.com',
+  password: 'secret'
+)
 # puts "Creating assassins..."
 # Assassin.create(
 #   user_id: user.id,
@@ -34,19 +43,24 @@ Assassin.destroy_all
 #   price: 0.8,
 
 # )
+puts "Creating Assassins"
 
-CSV.foreach(Rails.root.join('db/seeds/assassins.csv'), headers: true) do |row|
-  Assassin.create({
-
-    name: row['name'],
-    weapon: row['weapon'],
-    description: row['description'],
-    price: row['price'].to_i,
-    user_id: row['user_id'].to_i,
-    photo: row['photo']
-  })
+CSV.foreach(filepath, headers: :first_row) do |row|
+  puts "Creating #{row['Name']}"
+  assassin = Assassin.new(
+    name: row['Name'],
+    weapon: row['Weapon'],
+    description: row['Description'],
+    price: row['Price'].to_f,
+    photo: row['Photo']
+  )
+  assassin.user = user
+  assassin.photo.attach(io: File.open("app/assets/images/seed_profile_pic/#{row['Name']}.jpeg"),
+                        filename: "#{row['Name']}.jpeg",
+                        content_type: 'image/jpeg')
+  assassin.save
 end
 
-puts "There are now #{Assassin.count} rows in the transactions table"
+puts "There are now #{Assassin.count} rows in the Assassin table"
 
 puts "Finished!"
