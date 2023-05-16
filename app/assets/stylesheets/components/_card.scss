@@ -20,9 +20,6 @@
   width: 256px;
   background: #d9d9d9;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
 }
 .card-product-infos {
   display: flex;
@@ -55,6 +52,48 @@
   padding: 3px;
 }
 
+// CARD FOR ASSASSIN(SHOW) and BOOKING(SHOW)
+// ----- big card --------------------
+.cards-profile {
+  background: #BBBBBB;
+  box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
+  width: 1045px;
+}
+
+.cards-profile p {
+  color: white;
+  font-size: 20px;
+}
+
+.card-profile {
+  display: flex;
+  align-items: center;
+}
+
+.card-profile img {
+  height: 100%;
+  width: 350px;
+  object-fit: cover;
+}
+
+.card-profile h2 {
+  font-size: 30px;
+  color: $red;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-profile p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-profile .card-profile-infos {
+  padding: 16px;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
