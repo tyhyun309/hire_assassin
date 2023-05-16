@@ -15,34 +15,23 @@ User.destroy_all
 puts "Creating Test User"
 
 User.create(
+  name: 'admin',
+  email: 'admin@wagon.com',
+  password: 'secret'
+)
+
+user = User.create(
   name: 'lewagon',
   email: 'le@wagon.com',
   password: 'secret'
 )
 
-user = User.create(
+User.create(
   name: 'user',
   email: 'user@wagon.com',
   password: 'secret'
 )
-# puts "Creating assassins..."
-# Assassin.create(
-#   user_id: user.id,
-#   name: "Joyce",
-#   weapon: "Surfboard",
-#   description: 'love surfing with killing',
-#   price: 0.8,
 
-# )
-
-# Assassin.create(
-#   user_id: user.id,
-#   name: "Arthur",
-#   weapon: "Bare Fist",
-#   description: 'love the gym',
-#   price: 0.8,
-
-# )
 puts "Creating Assassins"
 
 CSV.foreach(filepath, headers: :first_row) do |row|
