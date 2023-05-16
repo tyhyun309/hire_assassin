@@ -7,8 +7,11 @@ class Assassin::BookingPolicy < ApplicationPolicy
 
     # copy from Doug, double check function**
     def resolve
-      assassin = Assassin.find_by(user_id: user.id)
-      return assassin.bookings
+      user.bookings_as_assassin
     end
+  end
+
+  def update?
+    record.assassin == user.assassin
   end
 end
