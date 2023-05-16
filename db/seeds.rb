@@ -1,4 +1,5 @@
 require 'csv'
+require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,6 +10,7 @@ require 'csv'
 filepath = "db/seeds/Assassins Wagon Seed.csv"
 
 puts "Cleaning database..."
+Booking.destroy_all
 Assassin.destroy_all
 User.destroy_all
 
@@ -17,12 +19,6 @@ puts "Creating Test User"
 User.create(
   name: 'admin',
   email: 'admin@wagon.com',
-  password: 'secret'
-)
-
-user = User.create(
-  name: 'lewagon',
-  email: 'le@wagon.com',
   password: 'secret'
 )
 
@@ -36,6 +32,12 @@ puts "Creating Assassins"
 
 CSV.foreach(filepath, headers: :first_row) do |row|
   puts "Creating #{row['Name']}"
+
+  user = User.create(
+    name: row['Name'],
+    email: "#{row['Name']}@wagon.com",
+    password: 'secret'
+  )
   assassin = Assassin.new(
     name: row['Name'],
     weapon: row['Weapon'],
@@ -50,5 +52,21 @@ CSV.foreach(filepath, headers: :first_row) do |row|
 end
 
 puts "There are now #{Assassin.count} rows in the Assassin table"
+
+puts "Creating booking"
+
+20.times do
+  booking = Booking.new(
+    target_name: Faker::JapaneseMedia::FmaBrotherhood.character,
+    target_location: Faker::Address.full_address,
+    deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
+    details: Faker::Fantasy::Tolkien.poem
+  )
+  booking.user = User.all.sample
+  booking.assassin = Assassin.all.sample
+  booking.save
+end
+
+puts "There are now #{Booking.count} rows in the Assassin table"
 
 puts "Finished!"
