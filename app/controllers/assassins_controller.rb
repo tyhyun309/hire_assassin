@@ -7,6 +7,7 @@ class AssassinsController < ApplicationController
   def show
     @assassin = Assassin.find(params[:id])
     authorize @assassin
+    @booking = Booking.new
   end
 
   def edit
