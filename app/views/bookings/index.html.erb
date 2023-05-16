@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6">
+      <div class="card text-center" style="font-family: Boogaloo">
+        <% @bookings.each do |booking| %>
+          <div class="card-body">
+            <p>ASSASSIN NAME: <%= booking.assassin.name %></p>
+            <p>TARGET NAME: <%= booking.target_name %></p>
+            <p>TARGET LOCATION: <%= booking.target_location %></p>
+            <p>BOOKING STATUS: <%= booking.status %></p>
+            <p>DEADLINE: <%= booking.deadline %></p>
+          </div>
+          <div class="card-header">
+            <p>REQUEST FROM CLIENT:</p>
+            <p><%= booking.details %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2"  %>
+</div>
