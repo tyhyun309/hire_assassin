@@ -52,3 +52,10 @@ end
 puts "There are now #{Assassin.count} rows in the Assassin table"
 
 puts "Finished!"
+
+Booking.create(
+  target_name: "Lucas Reynolds",
+  target_location: "Malibu, California, USA",
+  details: "I want Assassin Joyce to eliminate Lucas Reynolds, a corrupt real estate tycoon who frequently attends high-profile surfing competitions in Malibu. Joyce will use her surfboard dagger to discreetly strike during one of these competitions. Let's ensure justice prevails and put an end to Lucas's harmful actions.",
+  deadline: Date.new(2023, 7, 15)
+)
