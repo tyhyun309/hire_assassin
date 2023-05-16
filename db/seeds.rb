@@ -40,7 +40,7 @@ CSV.foreach(filepath, headers: :first_row) do |row|
     name: row['Name'],
     weapon: row['Weapon'],
     description: row['Description'],
-    price: row['Price'].to_f,
+    price: row['Price'].to_f
   )
   assassin.user = user
   assassin.photo.attach(io: File.open("app/assets/images/seed_profile_pic/#{row['Name']}.jpeg"),
