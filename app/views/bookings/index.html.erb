@@ -1,46 +1,28 @@
-<div class="container">
-  <h1>My Pending Bookings</h1>
-  <table class="table table-striped">
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.id %>ID</td>
-          <td><%= booking.client_name %>Client Name</td>
-          <td><%= booking.status %>Action</td>
-          <td>
-            <%= link_to 'Accept', accept_booking_path(booking), class: 'btn btn-primary' %>
-          </td>
-        </tr>
+<div class="container mt-4" style="width: 60%;">
+  <h1>MY BOOKINGS</h1>
+  <div class="row">
+    <div class="col-12">
+      <div class="card text-center" style="font-family: Boogaloo">
+        <% @bookings.each do |booking| %>
+          <div class="card-body">
+            <div class="d-flex justify-content-center align-items-center">
+              <%= cl_image_tag booking.assassin.photo.key, width: 300, height: 200, crop: :fill %>
+              <div class="div"><br>
+                <p>ASSASSIN NAME:</span> <%= booking.assassin.name %></p>
+              <p>TARGET NAME: <%= booking.target_name %></p>
+              <p>TARGET LOCATION: <%= booking.target_location %></p>
+              <p>BOOKING STATUS: <%= booking.status %></p>
+              <p>DEADLINE: <%= booking.deadline %></p>
+            </div>
+          </div>
+        </div>
+        <div class="card-header">
+          <p>REQUEST FROM CLIENT:</p>
+          <p><%= booking.details %></p>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-
-  <h1>My Active Bookings</h1>
-  <table class="table table-striped">
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.id %>ID</td>
-          <td><%= booking.client_name %>Client Name</td>
-          <td><%= booking.status %>Status</td>
-          <td>
-            <%= link_to 'Mark as Complete', complete_booking_path(booking), class: 'btn btn-success' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <h1>My Completed Bookings</h1>
-  <table class="table table-striped">
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.id %>ID</td>
-          <td><%= booking.client_name %>Client Name</td>
-          <td><%= booking.status %>Status</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
+</div>
+<%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2"  %>
 </div>
