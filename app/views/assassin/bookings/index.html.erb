@@ -1,25 +1,36 @@
 <div class="container">
-  <h1>Assassin's Bookings</h1>
-    <% @bookings.each do |booking| %>
+	<h1>Assassin's Bookings</h1>
+	<% @bookings.each do |booking| %>
 
-    <div class="card text-center mb-4">
-      <div class="card-header">
-      Target Name: <%= booking.target_name %> <br> <br> Target Location: <%= booking.target_location %>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Assignment # <%= booking.id %></h5>
-        <p> Details:<%= booking.details %></p>
-        <% if booking.status =="Pending" %>
-          <td><%= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
-        <% elsif booking.status == "Accepted" %>
-          <td><%= link_to 'Mark as Complete', booking_path(booking), method: :patch, class: 'btn btn-danger' %></td>
-        <% else %>
-          <p class="fs-3">TARGET ELIMINATED</p>
-        <% end %>
-      </div>
-      <div class="card-footer text-muted">
-        Due Date: <%= booking.deadline %>
-      </div>
-    </div>
+		<div class="card text-center mb-4">
+			<div class="card-header">
+				Target Name: <%= booking.target_name %> <br>
+				<br>
+				Target Location: <%= booking.target_location %>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Assignment # <%= booking.id %></h5>
+				<p> Details:<%= booking.details %></p>
+				<p> Status:<%= booking.status %></p>
+				<% if booking.status =="Pending" %>
+					<td><%#= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
+					<%= form_for [:assassin, booking] do |t| %>
+						<%= t.hidden_field :status, :value=>"Accepted" %>
+						<%= t.submit "Accept the Job", class: 'btn btn-primary' %>
+					<% end %>
+				<% elsif booking.status == "Accepted" %>
+					<td><%#= link_to 'Mark as Complete', booking_path(booking), method: :patch, class: 'btn btn-danger' %></td>
+					<%= form_for [:assassin, booking] do |t| %>
+						<%= t.hidden_field :status, :value=>"Completed" %>
+						<%= t.submit "Kill Confirmed!", class: 'btn btn-danger' %>
+					<% end %>
+				<% else %>
+					<p class="fs-3">TARGET ELIMINATED</p>
+				<% end %>
+			</div>
+			<div class="card-footer text-muted">
+				Due Date: <%= booking.deadline %>
+			</div>
+		</div>
 
-  <% end %>
+	<% end %>
