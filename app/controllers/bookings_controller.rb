@@ -1,12 +1,9 @@
 class BookingsController < ApplicationController
-
   before_action :set_booking, only: [:update]
   # User can see all of their bookings
   def index
-
     @bookings = policy_scope(Booking)
-
-    # ? Does device do this auotmatically? Fix this tomorrow.
+    # ? Does devise do this automatically? Fix this tomorrow.
   end
 
   # User can create a booking in the Assassin's page
@@ -20,8 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      # render "assassin/show", status: :unprocessable_entity
-      render "assassin/:assassin_id", status: :unprocessable_entity
+      render "assassins/show", status: :unprocessable_entity
     end
   end
 
