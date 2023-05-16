@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one :assassin
   has_many :bookings
+  has_many :bookings_as_assassin, through: :assassin, source: :bookings
 end
