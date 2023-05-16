@@ -4,5 +4,12 @@ class AssassinPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+<<<<<<< HEAD
+=======
+  end
+
+  def show?
+    true
+>>>>>>> master
   end
 end
