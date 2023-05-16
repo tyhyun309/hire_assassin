@@ -3,4 +3,5 @@ class Assassin::BookingsController < ApplicationController
     # Does devise chooses the bookings automatically?
     @bookings = policy_scope([:assassin, Booking])
   end
+
 end

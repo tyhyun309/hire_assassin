@@ -35,4 +35,22 @@ Assassin.create(
 
 )
 
+Booking.create(
+  assassin_id: 1,
+  user_id: 2,
+  details: "I want Assassin Joyce to eliminate Lucas Reynolds, a corrupt real estate tycoon who frequently attends high-profile surfing competitions in Malibu. Joyce will use her surfboard dagger to discreetly strike during one of these competitions. Lets ensure justice prevails and put an end to Lucass harmful actions.",
+  target_name: "LUCAS REYNOLDS",
+  target_location: "MALIBU, CALIFORNIA, USA",
+  deadline: "must be completed by July 15, 2023."
+)
+
+Booking.create(
+  assassin_id: 1,
+  user_id: 2,
+  details: "he massacre took place in El Paso. Bud is leading his brother to believe that he was so vehemently opposed to the attempt on Beatrix.",
+  target_name: "Budd",
+  target_location: "NY, USA",
+  deadline: "must be completed by Dec 18, 2024."
+)
+
 puts "Finished!"
