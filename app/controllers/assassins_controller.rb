@@ -1,11 +1,12 @@
 class AssassinsController < ApplicationController
-
   def index
-    @assassins = Assassin.all
+    # @assassins = Assassin.all
+    @assassins = policy_scope(Assassin)
   end
 
   def show
     @assassin = Assassin.find(params[:id])
+    authorize @assassin
   end
 
   def edit
