@@ -53,6 +53,7 @@ end
 
 puts "There are now #{Assassin.count} rows in the Assassin table"
 
+
 puts "Creating booking"
 
 20.times do

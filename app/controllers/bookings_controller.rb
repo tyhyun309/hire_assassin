@@ -3,9 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:create, :update]
   # User can see all of their bookings
   def index
-
     @bookings = policy_scope(Booking)
-
     # ? Does device do this auotmatically? Fix this tomorrow.
   end
 
@@ -27,6 +25,7 @@ class BookingsController < ApplicationController
       render "assassin/show", status: :unprocessable_entity
     end
   end
+
 
   private
 
