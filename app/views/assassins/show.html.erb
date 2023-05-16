@@ -10,8 +10,15 @@
         <a href="#" class="btn btn-dark">IGNITE THE CONTRACT</a>
       </div>
     </div>
-    <p>Some random thing about <%= @assassin.name %> : <br>
+    <p>Some random things about <%= @assassin.name %> : <br>
       <%= @assassin.description %></p>
   </div>
-  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark" %>
+  <%= simple_form_for [@assassin, @booking] do |f| %>
+    <%= f.input :target_name %>
+    <%= f.input :target_location %>
+    <%= f.input :deadline, start_year: Date.current.year, end_year: Date.current.year + 5 %>
+    <%= f.input :details, label: "Any requests?" %>
+    <%= f.submit "IGNITE THE CONTRACT", class: "btn btn-dark" %>
+  <% end %>
+  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
 </div>

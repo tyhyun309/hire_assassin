@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: [:create, :update]
+  before_action :set_booking, only: [:update]
   # User can see all of their bookings
   def index
     @bookings = policy_scope(Booking)
@@ -9,12 +9,17 @@ class BookingsController < ApplicationController
 
   # User can create a booking in the Assassin's page
   def create
+    @booking = Booking.new(booking_params)
     @assassin = Assassin.find(params[:assassin_id])
-    @bookings.assassin = @assassin
-    if @bookings.save
+    @booking.assassin = @assassin
+    @user = current_user
+    @booking.user = @user
+    authorize @assassin
+    if @booking.save
       redirect_to bookings_path
     else
-      render "assassin/show", status: :unprocessable_entity
+      # render "assassin/show", status: :unprocessable_entity
+      render "assassin/:assassin_id", status: :unprocessable_entity
     end
   end
 
@@ -35,6 +40,6 @@ class BookingsController < ApplicationController
 
   # what if you only allow to update one attribute for a specific action? do we still make a global strong params?
   def booking_params
-    params.require(:booking).permits(:details, :target_name, :target_location, :deadline)
+    params.require(:booking).permit(:details, :target_name, :target_location, :deadline)
   end
 end

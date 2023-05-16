@@ -1,3 +1,4 @@
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -54,6 +55,7 @@
 
 // CARD FOR ASSASSIN(SHOW) and BOOKING(SHOW)
 // ----- big card --------------------
+
 .cards-profile {
   background: #BBBBBB;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
@@ -63,6 +65,7 @@
 .cards-profile p {
   color: white;
   font-size: 20px;
+  padding: 11px;
 }
 
 .card-profile {
@@ -89,6 +92,7 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+
 }
 
 .card-profile .card-profile-infos {
