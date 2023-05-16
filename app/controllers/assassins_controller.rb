@@ -1,9 +1,6 @@
 class AssassinsController < ApplicationController
   def index
-<<<<<<< HEAD
-=======
     # @assassins = Assassin.all
->>>>>>> master
     @assassins = policy_scope(Assassin)
   end
 
