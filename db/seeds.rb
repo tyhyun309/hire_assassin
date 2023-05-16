@@ -12,10 +12,9 @@ puts "Cleaning database..."
 Assassin.destroy_all
 User.destroy_all
 
-
 puts "Creating Test User"
 
-admin = User.create(
+User.create(
   name: 'lewagon',
   email: 'le@wagon.com',
   password: 'secret'
