@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   before_action :set_booking, only: [:update]
   # User can see all of their bookings
   def index
@@ -18,8 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      # render "assassin/show", status: :unprocessable_entity
-      render "assassin/:assassin_id", status: :unprocessable_entity
+      render "assassins/show", status: :unprocessable_entity
     end
   end
 
