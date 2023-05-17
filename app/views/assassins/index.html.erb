@@ -1,12 +1,10 @@
 <div class="container" style="width:80%">
-<<<<<<< HEAD
   <h1>All Assassins</h1>
   <div class="cards">
     <% @assassins.each do |assassin| %>
       <div class="row">
         <div class="card-product col-3">
           <%= cl_image_tag(assassin.photo.key, crop: :thumb, gravity: :faces, height: 150, width: 235) %>
-          <%# <img class src="" alt="Card image cap"> %>
           <div class="card-product-infos">
             <div class="div">
               <h2><%= assassin.name %></h2>
@@ -21,27 +19,4 @@
       </div>
     <% end %>
   </div>
-=======
-	<h1>All Assassins</h1>
-	<div class="cards">
-		<% @assassins.each do |assassin| %>
-			<div class="row">
-				<div class="card-product col-3">
-					<%= cl_image_tag(assassin.photo.key) %>
-					<%# <img class src="" alt="Card image cap"> %>
-					<div class="card-product-infos">
-						<div class="div">
-							<h2><%= assassin.name %></h2>
-							<p><%= assassin.weapon %></p>
-							<%= link_to "Find out more", assassin_path(assassin), class: "small-btn" %>
-						</div>
-						<div class="div">
-							<p>💰<%= assassin.price %> bitcion(s)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		<% end %>
-	</div>
->>>>>>> master
 </div>

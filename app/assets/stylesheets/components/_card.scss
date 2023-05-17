@@ -60,7 +60,8 @@
 .cards-profile {
   background: #BBBBBB;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
-  width: 1045px;
+  //width: 1045px;
+  min-width: fit-content;
 }
 
 .cards-profile p {

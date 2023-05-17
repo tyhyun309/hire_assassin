@@ -2,7 +2,7 @@
   <h2><%= @assassin.name  %>'s PROFILE</h2>
   <div class="cards-profile">
     <div class="card-profile">
-      <%= cl_image_tag @assassin.photo.key, width: 350, height: 350, crop: :fill %>
+      <%= cl_image_tag @assassin.photo.key, width: 350, height: 350, crop: :fill, gravity: :faces %>
       <div class="card-profile-infos">
         <h2 class='card-title'><span style="color:black">Name : </span><%= @assassin.name %></h2>
         <h2 class='card-title'><span style="color:black">Weapon : </span><%= @assassin.weapon %></h2>
