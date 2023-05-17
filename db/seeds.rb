@@ -53,8 +53,7 @@ end
 
 puts "There are now #{Assassin.count} rows in the Assassin table"
 
-
-puts "Creating booking"
+puts "Creating bookings"
 
 20.times do
   booking = Booking.new(
@@ -68,13 +67,32 @@ puts "Creating booking"
   booking.save
 end
 
-puts "There are now #{Booking.count} rows in the Assassin table"
+10.times do
+  booking = Booking.new(
+    target_name: Faker::Movies::StarWars.character,
+    target_location: Faker::Address.full_address,
+    deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
+    details: Faker::Fantasy::Tolkien.poem
+  )
+  booking.user = User.all.sample
+  booking.assassin = Assassin.all.sample
+  booking.status = "Accepted"
+  booking.save
+end
+
+10.times do
+  booking = Booking.new(
+    target_name: Faker::JapaneseMedia::SwordArtOnline.real_name,
+    target_location: Faker::Address.full_address,
+    deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
+    details: Faker::Fantasy::Tolkien.poem
+  )
+  booking.user = User.all.sample
+  booking.assassin = Assassin.all.sample
+  booking.status = "Completed"
+  booking.save
+end
+
+puts "There are now #{Booking.count} rows in the Bookings table"
 
 puts "Finished!"
-
-Booking.create(
-  target_name: "Lucas Reynolds",
-  target_location: "Malibu, California, USA",
-  details: "I want Assassin Joyce to eliminate Lucas Reynolds, a corrupt real estate tycoon who frequently attends high-profile surfing competitions in Malibu. Joyce will use her surfboard dagger to discreetly strike during one of these competitions. Let's ensure justice prevails and put an end to Lucas's harmful actions.",
-  deadline: Date.new(2023, 7, 15)
-)
