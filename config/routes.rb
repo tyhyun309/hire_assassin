@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :update]
 
   namespace :assassin do
-    resources :bookings, only: :index
+    resources :bookings, only: [:index, :update]
   end
 end

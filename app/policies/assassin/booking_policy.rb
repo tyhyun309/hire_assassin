@@ -10,4 +10,8 @@ class Assassin::BookingPolicy < ApplicationPolicy
       user.bookings_as_assassin
     end
   end
+
+  def update?
+    record.assassin == user.assassin
+  end
 end
