@@ -4,7 +4,7 @@
   padding: 150px 0;
   filter: grayscale(100%);
   position: relative;
-  max-height: 300px; /* Adjust this value to your desired width */
+  max-height: 350px; /* Adjust this value to your desired width */
   margin: 0 auto;
 }
 
@@ -19,6 +19,7 @@
   font-size: 70px;
   font-weight: bold;
   font-family: $primary-font;
+  filter: none;
 }
 
 .banner p {
