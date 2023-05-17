@@ -4,7 +4,7 @@
     <% @assassins.each do |assassin| %>
       <div class="row">
         <div class="card-product col-3">
-          <%= cl_image_tag(assassin.photo.key) %>
+          <%= cl_image_tag(assassin.photo.key, crop: :thumb, gravity: :faces, height: 150, width: 235) %>
           <%# <img class src="" alt="Card image cap"> %>
           <div class="card-product-infos">
             <div class="div">
