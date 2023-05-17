@@ -15,7 +15,24 @@
 	</div>
 
 	<h1>Assassin's Bookings</h1>
+	<div class="cards-2column mt-4">
+		<div class="cards-booking-pending">
+			<h2>New Jobs</h2>
+			<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
+				<%= render "jobCard" , booking: booking %>
+			<% end %>
+		</div>
+		<div class="cards-booking-active">
+			<h2>Active Jobs</h2>
+			<% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
+				<%= render "jobCard" , booking: booking %>
+			<% end %>
+		</div>
+	</div>
 
-	<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
-		<%= render "jobCard" , booking: booking %>
-	<% end %>
+	<div class="cards-booking-history">
+		<h2>Completed Jobs</h2>
+		<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
+			<%= render "jobCard" , booking: booking %>
+		<% end %>
+	</div>
