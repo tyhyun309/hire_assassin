@@ -22,7 +22,8 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @bookings.update(booking_params)
+    authorize @booking
+    if @booking.update(booking_params)
       redirect_to bookings_path
     else
       render "assassin/show", status: :unprocessable_entity

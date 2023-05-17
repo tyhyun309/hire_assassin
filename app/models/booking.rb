@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   validates :target_name, presence: true
   validates :deadline, presence: true
 
-  has_one_attached :photo
+  has_one_attached :proof
 
   STATUS_OPTIONS = ['Pending', 'Accepted', 'Verify', 'Completed', 'Declined']
   validates :status, inclusion: { in: STATUS_OPTIONS }
