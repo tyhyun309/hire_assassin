@@ -1,13 +1,13 @@
 
 <div class="container">
   <h1>Tell me about you</h1>
-	<%= simple_form_for(@assassin) do |f| %>
-		<%= f.input :name %>
-		<%= f.input :weapon %>
-		<%= f.input :description, :as => :text %>
-		<%= f.input :price %>
-		<%= f.input :photo, as: :file %>
-		<%= f.submit %>
-	<% end %>
+  <%= simple_form_for(@assassin) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :weapon %>
+    <%= f.input :description, :as => :text %>
+    <%= f.input :price, input_html: { min: '0', step: 'any' } %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit 'Ready to KILL!'%>
+  <% end %>
 
 </div>
