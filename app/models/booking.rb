@@ -7,6 +7,6 @@ class Booking < ApplicationRecord
 
   has_one_attached :photo
 
-  STATUS_OPTIONS = ['Pending', 'Accepted', 'Verify', 'Completed']
+  STATUS_OPTIONS = ['Pending', 'Accepted', 'Verify', 'Completed', 'Declined']
   validates :status, inclusion: { in: STATUS_OPTIONS }
 end
