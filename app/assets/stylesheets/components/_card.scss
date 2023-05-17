@@ -97,6 +97,18 @@
 
 }
 
+// assassin bookings
+.cards-2column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+// Cards for Booking
+.card-booking {
+  margin: 16px
+}
+
 .card-profile .card-profile-infos {
   padding: 16px;
 }
