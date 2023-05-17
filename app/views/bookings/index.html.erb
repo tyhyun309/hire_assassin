@@ -1,28 +1,28 @@
-<div class="container mt-4" style="width: 60%;">
+<div class="container" style="width: 60%;">
   <h1>MY BOOKINGS</h1>
   <div class="row">
     <div class="col-12">
-      <div class="card text-center" style="font-family: Boogaloo">
-        <% @bookings.each do |booking| %>
+      <% @bookings.each do |booking| %>
+        <div class="card text-center card-container">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <%= cl_image_tag booking.assassin.photo.key, width: 300, height: 200, crop: :fill %>
-              <div class="div"><br>
-                <p>ASSASSIN NAME:</span> <%= booking.assassin.name %></p>
-              <p>TARGET NAME: <%= booking.target_name %></p>
-              <p>TARGET LOCATION: <%= booking.target_location %></p>
-              <p>BOOKING STATUS: <%= booking.status %></p>
-              <p>DEADLINE: <%= booking.deadline %></p>
+              <div class="details-container"><br>
+                <p>ASSASSIN NAME: <span style="color: #BE0000"><%= booking.assassin.name %></span></p>
+                <p>TARGET NAME: <span style="color: #BE0000"><%= booking.target_name %></span></p>
+                <p>TARGET LOCATION: <span style="color: #BE0000"><%= booking.target_location %></span></p>
+                <p>BOOKING STATUS: <span style="color: #BE0000"><%= booking.status %></span></p>
+                <p>DEADLINE: <span style="color: #BE0000"><%= booking.deadline %></span></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-header">
-          <p>REQUEST FROM CLIENT:</p>
-          <p><%= booking.details %></p>
+          <div class="card-header">
+            <p>MY REQUEST:</p>
+            <p><%= booking.details %></p>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-<%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2"  %>
+  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
 </div>

@@ -1,3 +1,8 @@
+.card-container {
+  margin-bottom: 1.5rem; /* Adjust the margin value as needed */
+  font-size: larger;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
