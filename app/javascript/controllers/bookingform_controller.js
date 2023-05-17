@@ -9,7 +9,7 @@ export default class extends Controller {
   }
   showTargets() {
     this.hideableTarget.hidden = false;
-    window.scrollTo(100, 1000)
+    window.scrollTo(10, 1000)
     };
 
 }
