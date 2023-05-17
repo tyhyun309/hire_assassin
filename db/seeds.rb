@@ -93,6 +93,19 @@ end
   booking.save
 end
 
+70.times do
+  booking = Booking.new(
+    target_name: Faker::Name.name,
+    target_location: Faker::Address.full_address,
+    deadline: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    details: Faker::Fantasy::Tolkien.poem
+  )
+  booking.user = User.all.sample
+  booking.assassin = Assassin.find_by_name("John")
+  booking.status = "Completed"
+  booking.save
+end
+
 puts "There are now #{Booking.count} rows in the Bookings table"
 
 puts "Finished!"
