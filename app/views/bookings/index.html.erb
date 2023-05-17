@@ -1,29 +1,43 @@
 <div class="container" style="width: 60%;">
-  <h1>MY BOOKINGS</h1>
-  <div class="row">
-    <div class="col-12">
-      <% @bookings.each do |booking| %>
-        <div class="card text-center card-container">
-          <div class="card-body">
-            <div class="d-flex justify-content-center align-items-center">
-              <%= cl_image_tag booking.assassin.photo.key, width: 300, height: 200, crop: :fill %>
-              <div class="details-container"><br>
-                <p>ASSASSIN NAME: <span style="color: #BE0000"><%= booking.assassin.name %></span></p>
-                <p>TARGET NAME: <span style="color: #BE0000"><%= booking.target_name %></span></p>
-                <p>TARGET LOCATION: <span style="color: #BE0000"><%= booking.target_location %></span></p>
-                <p>BOOKING STATUS: <span style="color: #BE0000"><%= booking.status %></span></p>
-                <p>DEADLINE: <span style="color: #BE0000"><%= booking.deadline %></span></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-header">
-            <p>MY REQUEST:</p>
-            <p><%= booking.details %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+	<h1>MY BOOKINGS</h1>
+	<div class="row">
+		<div class="col-12">
+			<% @bookings.each do |booking| %>
+				<div class="card text-center card-container">
+					<div class="card-body">
+						<div class="d-flex justify-content-center align-items-center">
+							<%= cl_image_tag booking.assassin.photo.key, width: 300, height: 200, crop: :fill %>
+							<div class="details-container"><br>
+								<p>ASSASSIN NAME: <span style="color: #BE0000"><%= booking.assassin.name %></span></p>
+								<p>TARGET NAME: <span style="color: #BE0000"><%= booking.target_name %></span></p>
+								<p>TARGET LOCATION: <span style="color: #BE0000"><%= booking.target_location %></span></p>
+								<p>BOOKING STATUS: <span style="color: #BE0000"><%= booking.status %></span></p>
+								<p>DEADLINE: <span style="color: #BE0000"><%= booking.deadline %></span></p>
+							</div>
+						</div>
+					</div>
+					<div >
+						<% if booking.status == "Verify" || booking.status == "Completed"%>
+							<h1>hi</h1>
+							<% if !booking.photo.key.nil? %>
+								<p>PROOF:  <span style="color: #BE0000"><%= cl_image_tag booking.photo.key, alt: "proof" %></span></p>
+							<% end %>
+							<% if booking.status == "Verify" %>
+								<%= form_for booking do |t| %>
+									<%= t.hidden_field :status, :value=>"Completed" %>
+									<%= t.submit "I Verified Job is Done", class: 'btn btn-primary' %>
+								<% end %>
+							<% end %>
+						<% end %>
+					</div>
+					<div class="card-header">
+						<p>MY REQUEST:</p>
+						<p><%= booking.details %></p>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
 <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
 </div>
