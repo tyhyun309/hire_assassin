@@ -5,7 +5,7 @@
 		Target Location: <%= booking.target_location %>
 	</div>
 	<div class="card-body">
-		<h5 class="card-title">Assignment # <%= booking.id %></h5>
+		<h3 class="card-title">Assignment # <%= booking.id %></h3>
 		<p> Details:<%= booking.details %></p>
 		<% if !booking.proof.key.nil? %>
 			<p>PROOF:</p>
@@ -30,7 +30,7 @@
 				<p> Status:<%= booking.status %></p>
 				<%= f.hidden_field :status, :value=>"Verify" %>
 				<%= f.submit "Confirm Kill!", class: 'btn btn-danger' %>
-				<%= f.input :proof, as: :file, label: "Proof" %>
+				<%= f.input :proof, as: :file, label: "Proof (Optional)" %>
 			<% end %>
 		<% elsif booking.status == "Declined" %>
 			<p class="fs-3">DECLINED</p>
