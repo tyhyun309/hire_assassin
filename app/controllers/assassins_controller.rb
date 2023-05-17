@@ -20,7 +20,25 @@ class AssassinsController < ApplicationController
     redirect_to assassin_path(:assassin)
   end
 
+  def new
+    @assassin = Assassin.new
+    authorize @assassin
+  end
+
+  def create
+    @assassin = Assassin.new(assassin_params)
+    @assassin.user = current_user
+    authorize @assassin
+    if @assassin.save
+      redirect_to assassin_my_a_bookings_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
   def assassin_params
-    params.require(:assassin).permit(:photo)
+    params.require(:assassin).permit(:name, :weapon, :description, :price, :photo)
   end
 end

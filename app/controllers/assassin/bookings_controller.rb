@@ -3,6 +3,7 @@ class Assassin::BookingsController < ApplicationController
 
   def index
     # Does devise chooses the bookings automatically?
+    @assassin = current_user.assassin
     @bookings = policy_scope([:assassin, Booking])
   end
 
