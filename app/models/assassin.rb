@@ -4,4 +4,5 @@ class Assassin < ApplicationRecord
   has_one_attached :photo
   validates :name, presence: true
   validates :price, presence: true
+  validates :photo, presence: true
 end
