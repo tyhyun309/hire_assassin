@@ -5,24 +5,47 @@ class AssassinsController < ApplicationController
   end
 
   def show
-    @assassin = Assassin.find(params[:id])
+    set_assassin
     authorize @assassin
     @booking = Booking.new
+    @score = 0
+    @assassin.bookings.each do |booking|
+      if booking.rating.present?
+        @score += booking.rating
+      end
+    end
+    @score /= @assassin.bookings.count
   end
 
+  # def score
+  #   set_assassin
+  # end
+
   def edit
-    @assassin = Assassin.find(params[:id])
+    set_assassin
+    authorize @assassin
   end
 
   def update
-    @assassin = Assassin.find(params[:id])
+    set_assassin
+    authorize @assassin
     @assassin.update(assassin_params)
     redirect_to assassin_path(:assassin)
+    if @assassin.save
+      redirect_to assassins_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def new
     @assassin = Assassin.new
     authorize @assassin
+    if @assassin.save
+      redirect_to assassins_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -37,6 +60,10 @@ class AssassinsController < ApplicationController
   end
 
   private
+
+  def set_assassin
+    @assassin = Assassin.find(params[:id])
+  end
 
   def assassin_params
     params.require(:assassin).permit(:name, :weapon, :description, :price, :photo)

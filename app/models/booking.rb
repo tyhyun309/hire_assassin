@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
 
   validates :target_name, presence: true
   validates :deadline, presence: true
+  validates :rating, presence: true
 
   has_one_attached :proof
 
