@@ -4,6 +4,16 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     # ? Does device do this auotmatically? Fix this tomorrow.
+    # The `geocoded` scope filters only bookings with coordinates
+    @bookings_with_markers = @bookings.geocoded.map do |booking|
+      {
+        booking: booking,
+        lat: booking.latitude,
+        lng: booking.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {booking: booking}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   # User can create a booking in the Assassin's page

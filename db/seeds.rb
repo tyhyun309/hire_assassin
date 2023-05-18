@@ -38,6 +38,7 @@ CSV.foreach(filepath, headers: :first_row) do |row|
     email: "#{row['Name']}@wagon.com",
     password: 'secret'
   )
+
   assassin = Assassin.new(
     name: row['Name'],
     weapon: row['Weapon'],

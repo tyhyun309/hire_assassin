@@ -1,28 +1,43 @@
-<div class="container"">
-	<h1>MY BOOKINGS</h1>
-	<div class="cards-2column">
-		<div class="cards-booking-pending">
-			<h2>Waiting for assassin to accept</h2>
-			<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
-				<%= render "bookingCard", booking: booking%>
-			<% end %>
-		</div>
-		<div class="cards-booking-active">
-			<h2>Active Requests</h2>
-			<% @bookings.select{|booking| booking.status == "Accepted" || booking.status == "Verify"}.sort_by(&:status).each do |booking| %>
-				<%= render "bookingCard", booking: booking%>
-			<% end %>
-		</div>
-	</div>
-	<div>
-		<div class="cards-booking-history">
-			<h2>Bookings history</h2>
-			<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
-				<%= render "bookingCard", booking: booking%>
-			<% end %>
-		</div>
-	</div>
-  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
-</div>
-
+<div class="container">
+  <h1>MY BOOKINGS</h1>
+  <div class="cards-2column">
+    <div class="cards-booking-pending">
+      <h2>Waiting for assassin to accept</h2>
+      <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Pending"}.each do |bwm| %>
+        <%= render "bookingCard", booking: bwm[:booking]%>
+        <div style="width: 70%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= [bwm].to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      <% end %>
+    </div>
+    <div class="cards-booking-active">
+      <h2>Active Requests</h2>
+      <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Accepted" || bwm[:booking].status == "Verify"}.sort_by{ |bwm| bwm[:booking][:status] }.each do |bwm| %>
+        <%= render "bookingCard", booking: bwm[:booking]%>
+        <div style="width: 70%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= [bwm].to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <div class="cards-booking-history">
+      <h2>Bookings history</h2>
+      <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Completed"}.each do |bwm| %>
+        <%= render "bookingCard", booking: bwm[:booking]%>
+        <div style="width: 70%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= [bwm].to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
+    </div>
+  </div>
 </div>

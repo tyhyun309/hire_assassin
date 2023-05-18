@@ -5,6 +5,15 @@ class Assassin::BookingsController < ApplicationController
     # Does devise chooses the bookings automatically?
     @assassin = current_user.assassin
     @bookings = policy_scope([:assassin, Booking])
+    @bookings_with_markers = @bookings.geocoded.map do |booking|
+      {
+        booking: booking,
+        lat: booking.latitude,
+        lng: booking.longitude,
+        info_window_html: render_to_string(partial: "bookings/info_window", locals: {booking: booking}),
+        marker_html: render_to_string(partial: "bookings/marker")
+      }
+    end
   end
 
   def update
