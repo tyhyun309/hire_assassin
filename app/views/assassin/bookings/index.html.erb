@@ -1,49 +1,35 @@
 <div class="container">
-	<h2><%= @assassin.name  %>'s PROFILE</h2>
-	<div class="cards-profile">
-		<div class="card-profile">
-			<%= cl_image_tag @assassin.photo.key, width: 350, height: 350, crop: :fill, gravity: :faces  %>
-			<div class="card-profile-infos">
-				<h2 class='card-title'><span style="color:black">Name : </span><%= @assassin.name %></h2>
-				<h2 class='card-title'><span style="color:black">Weapon : </span><%= @assassin.weapon %></h2>
-				<h2 class='card-title'><span style="color:black">Rate : </span><%= @assassin.price %> <span style="color:black">bitcoin(s)💰</span></h2>
-				<%# <a href="#" class="btn btn-dark">IGNITE THE CONTRACT</a> %>
-			</div>
-		</div>
-		<p>Some random things about <%= @assassin.name %> : <br>
-			<%= @assassin.description %></p>
-	</div>
-
-	<h1>Assassin's Bookings</h1>
-    <div class="row justify-content-center">
-      <div class="col-sm-8 my-3">
-        <%= form_with url: assassin_my_a_bookings_path, method: :get, class: "d-flex" do %>
+  <%= render "shared/profileCard", score: @score , assassin: @assassin, booking: @booking%>
+  <h1>Assassin's Bookings</h1>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: assassin_my_a_bookings_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Find Your Assassin"%>
-          <%= submit_tag "Search", name: "", class: "btn btn-dark" %>
-        <% end %>
-      </div>
+        <%= submit_tag "Search", name: "", class: "btn btn-dark" %>
+      <% end %>
     </div>
-	<div class="cards-2column mt-4">
-		<div class="cards-booking-pending">
-			<h2>New Jobs</h2>
-			<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
-				<%= render "jobCard" , booking: booking %>
-			<% end %>
-		</div>
-		<div class="cards-booking-active">
-			<h2>Active Jobs</h2>
-			<% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
-				<%= render "jobCard" , booking: booking %>
-			<% end %>
-		</div>
-	</div>
-
-	<div class="cards-booking-history">
-		<h2>Completed Jobs</h2>
-		<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
-			<%= render "jobCard" , booking: booking %>
-		<% end %>
-	</div>
+  </div>
+  <div class="cards-2column mt-4">
+    <div class="cards-booking-pending">
+      <h2>New Jobs</h2>
+      <% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
+        <%= render "jobCard" , booking: booking %>
+      <% end %>
+    </div>
+    <div class="cards-booking-active">
+      <h2>Active Jobs</h2>
+      <% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
+        <%= render "jobCard" , booking: booking %>
+      <% end %>
+    </div>
+  </div>
+  <div class="cards-booking-history">
+    <h2>Completed Jobs</h2>
+    <% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
+      <%= render "jobCard" , booking: booking %>
+    <% end %>
+  </div>
+</div>

@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @booking.assassin = @assassin
     @user = current_user
     @booking.user = @user
+
     authorize @assassin
     if @booking.save
       redirect_to bookings_path
