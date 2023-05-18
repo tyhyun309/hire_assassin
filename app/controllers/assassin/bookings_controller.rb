@@ -5,6 +5,9 @@ class Assassin::BookingsController < ApplicationController
     # Does devise chooses the bookings automatically?
     @assassin = current_user.assassin
     @bookings = policy_scope([:assassin, Booking])
+    if params[:query].present?
+      @bookings = @bookings.search_by_name_location_status(params[:query])
+    end
   end
 
   def update
