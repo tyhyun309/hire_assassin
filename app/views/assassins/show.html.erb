@@ -1,15 +1,17 @@
 <%= render "shared/banner"%>
 <div class="container" style="width:80%" data-controller="bookingform">
-  <%= render "shared/profileCard"%>
-  <div class="review">
-    <h5>Some reviews from the previous jobs</h5>
-    <% @assassin.bookings.each do |booking| %>
-      <% if booking.review.present? %>
-        <ul>
-          <li><%= booking.review%></li>
-        </ul>
-      <% end %>
-    <% end %>
-  </div>
-  <%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
+	<%= render "shared/profileCard"%>
+	<div class="review">
+		<h5>Some reviews from the previous jobs</h5>
+		<% @assassin.bookings.each do |booking| %>
+			<% if booking.review.present? %>
+				<ul>
+					<li><%= booking.review%></li>
+					<li><%= booking.rating%></li>
+
+				</ul>
+			<% end %>
+		<% end %>
+	</div>
+	<%= link_to "BACK TO ALL ASSASSINS", assassins_path, class: "btn btn-dark mt-2" %>
 </div>
