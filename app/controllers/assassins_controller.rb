@@ -2,6 +2,9 @@ class AssassinsController < ApplicationController
   def index
     # @assassins = Assassin.all
     @assassins = policy_scope(Assassin)
+    if params[:query].present?
+      @assassins = @assassins.search_by_name_weapon_description(params[:query])
+    end
   end
 
   def show

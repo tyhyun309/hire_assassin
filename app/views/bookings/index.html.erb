@@ -1,5 +1,16 @@
-<div class="container"">
+<div class="container">
 	<h1>MY BOOKINGS</h1>
+    <div class="row justify-content-center">
+      <div class="col-sm-8 my-3">
+        <%= form_with url: bookings_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find Your Bookings"%>
+          <%= submit_tag "Search", name: "", class: "btn btn-dark" %>
+        <% end %>
+      </div>
+    </div>
 	<div class="cards-2column">
 		<div class="cards-booking-pending">
 			<h2>Waiting for assassin to accept</h2>
