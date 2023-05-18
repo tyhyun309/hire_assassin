@@ -19,3 +19,13 @@
   margin-right: 24px;
 
 }
+
+.navbar-lewagon .navbar-nav .nav-link {
+  color: rgb(239, 234, 234);
+  font-size: 20px;
+  margin-right: 24px;
+  &:hover {
+    color: rgb(234, 18, 18);
+    transition: 0.5s;
+  }
+}
