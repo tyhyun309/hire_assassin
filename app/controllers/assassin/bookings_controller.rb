@@ -6,7 +6,7 @@ class Assassin::BookingsController < ApplicationController
     @assassin = current_user.assassin
     @bookings = policy_scope([:assassin, Booking])
     if params[:query].present?
-      @bookings = @bookings.search_by_name_location_status(params[:query])
+      @bookings = @bookings.search_by_name_location_status_detail(params[:query])
     end
   end
 

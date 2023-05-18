@@ -23,10 +23,7 @@ class Booking < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_location_status_detail,
-    against: [ :target_name, :target_location, :status, :detail ],
-    associated_against: {
-      user: :name
-    },
+    against: [ :target_name, :target_location, :status, :details ],
     using: {
       tsearch: { prefix: true }
     }
