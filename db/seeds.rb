@@ -42,7 +42,7 @@ CSV.foreach(filepath, headers: :first_row) do |row|
     name: row['Name'],
     weapon: row['Weapon'],
     description: row['Description'],
-    price: row['Price'].to_f
+    price: rand(0.0..50.0).round(2)
   )
   assassin.user = user
   assassin.photo.attach(io: File.open("app/assets/images/seed_profile_pic/#{row['Name']}.jpeg"),
@@ -55,24 +55,24 @@ puts "There are now #{Assassin.count} rows in the Assassin table"
 
 puts "Creating bookings"
 
-20.times do
+100.times do
   booking = Booking.new(
     target_name: Faker::JapaneseMedia::FmaBrotherhood.character,
     target_location: Faker::Address.full_address,
     deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
-    details: Faker::Fantasy::Tolkien.poem
+    details: Faker::TvShows::RickAndMorty.quote
   )
   booking.user = User.all.sample
   booking.assassin = Assassin.all.sample
   booking.save
 end
 
-10.times do
+50.times do
   booking = Booking.new(
     target_name: Faker::Movies::StarWars.character,
     target_location: Faker::Address.full_address,
     deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
-    details: Faker::Fantasy::Tolkien.poem
+    details: Faker::TvShows::GameOfThrones.quote
   )
   booking.user = User.all.sample
   booking.assassin = Assassin.all.sample
@@ -80,12 +80,12 @@ end
   booking.save
 end
 
-10.times do
+200.times do
   booking = Booking.new(
     target_name: Faker::JapaneseMedia::SwordArtOnline.real_name,
     target_location: Faker::Address.full_address,
     deadline: Faker::Date.between_except(from: Date.today, to: 1.year.from_now, excepted: Date.today),
-    details: Faker::Fantasy::Tolkien.poem
+    details: Faker::TvShows::BigBangTheory.quote
   )
   booking.user = User.all.sample
   booking.assassin = Assassin.all.sample
@@ -93,19 +93,15 @@ end
   booking.save
 end
 
-70.times do
-  booking = Booking.new(
-    target_name: Faker::Name.name,
-    target_location: Faker::Address.full_address,
-    deadline: Faker::Date.between(from: 2.days.ago, to: Date.today),
-    details: Faker::Fantasy::Tolkien.poem
-  )
-  booking.user = User.all.sample
-  booking.assassin = Assassin.find_by_name("John")
-  booking.status = "Completed"
+puts "There are now #{Booking.count} rows in the Bookings table"
+
+puts "Creating Reviews, There are #{Booking.select { |booking| booking.status == 'Completed' }.count} Completed Bookings"
+
+Booking.select { |booking| booking.status == "Completed" }.each do |booking|
+  booking.review = Faker::TvShows::Spongebob.quote
+  booking.rating = rand(0..5)
   booking.save
 end
 
-puts "There are now #{Booking.count} rows in the Bookings table"
-
+puts "Created #{Booking.select { |booking| booking.review.present? }.count}"
 puts "Finished!"
