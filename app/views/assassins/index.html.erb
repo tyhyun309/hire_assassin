@@ -1,5 +1,16 @@
 <div class="container" style="width:80%">
   <h1>All Assassins</h1>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: assassins_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find Your Assassin"%>
+        <%= submit_tag "Search", name: "", class: "btn btn-dark" %>
+      <% end %>
+    </div>
+  </div>
   <div class="cards">
     <% @assassins.each do |assassin| %>
       <div class="row">
