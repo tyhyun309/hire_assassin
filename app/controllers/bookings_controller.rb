@@ -3,6 +3,9 @@ class BookingsController < ApplicationController
   # User can see all of their bookings
   def index
     @bookings = policy_scope(Booking)
+    if params[:query].present?
+      @bookings = @bookings.search_by_name_location_status(params[:query])
+    end
     # ? Does device do this auotmatically? Fix this tomorrow.
   end
 

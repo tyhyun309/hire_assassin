@@ -33,6 +33,7 @@ gem "pundit"
 gem "faker"
 
 gem "cloudinary"
+gem "pg_search"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
