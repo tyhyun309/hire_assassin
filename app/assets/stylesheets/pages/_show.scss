@@ -1,5 +1,7 @@
 .review ul {
   color: $red;
-  list-style-image: url("../../images/list_icon.svg");
-  //list-style-image: url("https://res.cloudinary.com/dfdergjip/image/upload/v1684382128/icon_1_jqx6y2.png");
+  list-style-image: url("list_icon.svg");
+}
+li::marker {
+  font-size: 1em; /* You can use px, but I think rem is more respecful */
 }

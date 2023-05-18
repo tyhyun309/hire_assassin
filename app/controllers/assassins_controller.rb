@@ -13,16 +13,12 @@ class AssassinsController < ApplicationController
     @booking = Booking.new
     @score = 0
     @assassin.bookings.each do |booking|
-      if booking.rating.present?
+      if booking.status == 'Completed' && booking.rating.present?
         @score += booking.rating
       end
     end
     @score /= @assassin.bookings.count
   end
-
-  # def score
-  #   set_assassin
-  # end
 
   def edit
     set_assassin
@@ -33,9 +29,9 @@ class AssassinsController < ApplicationController
     set_assassin
     authorize @assassin
     @assassin.update(assassin_params)
-    redirect_to assassin_path(:assassin)
+
     if @assassin.save
-      redirect_to assassins_path
+      redirect_to assassin_path(:assassin)
     else
       render :new, status: :unprocessable_entity
     end
