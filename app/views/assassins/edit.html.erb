@@ -1,4 +1,12 @@
-<%= simple_form_for(@assassin) do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<%= render "shared/banner"%>
+<div class="container">
+  <h2>Update Your Profile Here</h2>
+  <%= simple_form_for(@assassin) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :weapon %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Update" %>
+  <% end %>
+</div>
