@@ -33,6 +33,7 @@ class BookingsController < ApplicationController
 
   def update
     authorize @booking
+
     if @booking.update(booking_params)
       redirect_to bookings_path
     else
