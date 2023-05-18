@@ -1,7 +1,11 @@
 .review ul {
   color: $red;
-  list-style-image: url("list_icon.svg");
+  list-style: none;
+  padding-left: 1rem;
+  text-indent: -0.7rem;
+
+  li::before {
+  content: "💎";
+  padding: 5px;
 }
-li::marker {
-  font-size: 1em; /* You can use px, but I think rem is more respecful */
 }

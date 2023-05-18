@@ -11,15 +11,20 @@ class AssassinPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    user_is_owner?
   end
 
   def update?
-    true
+    user_is_owner?
   end
-
 
   def create?
     true
+  end
+
+  private
+
+  def user_is_owner?
+    record.user == user
   end
 end

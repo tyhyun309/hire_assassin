@@ -9,7 +9,7 @@ class AssassinsController < ApplicationController
 
   def show
     set_assassin
-    authorize @assassin
+    authorize(@assassin)
     @booking = Booking.new
     @score = 0
     @assassin.bookings.each do |booking|
@@ -18,20 +18,21 @@ class AssassinsController < ApplicationController
       end
     end
     @score /= @assassin.bookings.count
+    @score = @score.round(2)
   end
 
   def edit
     set_assassin
-    authorize @assassin
+    authorize(@assassin)
   end
 
   def update
     set_assassin
-    authorize @assassin
+    authorize(@assassin)
     @assassin.update(assassin_params)
 
     if @assassin.save
-      redirect_to assassin_path(:assassin)
+      redirect_to assassin_path(@assassin)
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +40,7 @@ class AssassinsController < ApplicationController
 
   def new
     @assassin = Assassin.new
-    authorize @assassin
+    authorize(@assassin)
     if @assassin.save
       redirect_to assassins_path
     else
@@ -50,7 +51,7 @@ class AssassinsController < ApplicationController
   def create
     @assassin = Assassin.new(assassin_params)
     @assassin.user = current_user
-    authorize @assassin
+    authorize(@assassin)
     if @assassin.save
       redirect_to assassin_my_a_bookings_path
     else

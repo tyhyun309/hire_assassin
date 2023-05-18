@@ -8,6 +8,17 @@ class Assassin::BookingsController < ApplicationController
     if params[:query].present?
       @bookings = @bookings.search_by_name_location_status_detail(params[:query])
     end
+
+    @booking = Booking.new # Just created for render simple form
+
+    @score = 0
+    @assassin.bookings.each do |booking|
+      if booking.status == 'Completed' && booking.rating.present?
+        @score += booking.rating
+      end
+    end
+    @score /= @assassin.bookings.count
+    @score = @score.round(2)
   end
 
   def update
