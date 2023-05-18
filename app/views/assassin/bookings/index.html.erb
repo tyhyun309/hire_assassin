@@ -17,35 +17,20 @@
   <div class="cards-2column mt-4">
     <div class="cards-booking-pending">
       <h2>New Jobs</h2>
-      <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Pending"}.each do |bwm| %>
-        <%= render "jobCard", booking: bwm[:booking]%>
-        <div style="width: 70%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= [bwm].to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+      <% @bookings.select { |booking| booking.status == "Pending" }.each do |booking| %>
+        <%= render "jobCard", booking: booking %>
       <% end %>
     </div>
     <div class="cards-booking-active">
       <h2>Active Jobs</h2>
-      <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Accepted" || bwm[:booking].status == "Verify"}.sort_by{ |bwm| bwm[:booking][:status] }.each do |bwm| %>
-        <%= render "jobCard", booking: bwm[:booking]%>
-        <div style="width: 70%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= [bwm].to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+      <% @bookings.select { |booking| booking.status == "Accepted" || booking.status == "Verify" }.sort_by(&:status).each do |booking| %>
+        <%= render "jobCard", booking: booking %>
       <% end %>
     </div>
   </div>
   <div class="cards-booking-history">
     <h2>Completed Jobs</h2>
-    <% @bookings_with_markers.select{ |bwm| bwm[:booking].status == "Completed"}.each do |bwm| %>
-      <%= render "jobCard", booking: bwm[:booking]%>
-      <div style="width: 70%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= [bwm].to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
+    <% @bookings.select { |booking| booking.status == "Completed" }.each do |booking| %>
+      <%= render "jobCard", booking: booking %>
     <% end %>
   </div>

@@ -1,48 +1,51 @@
 <div class="card-booking text-center">
-	<div class="card-header">
-		Target Name: <%= booking.target_name %> <br>
-		<br>
-		Target Location: <%= booking.target_location %>
-	</div>
-	<div class="card-body">
-		<h3 class="card-title">Assignment # <%= booking.id %></h3>
-		<p> Details:<%= booking.details %></p>
-		<% if !booking.proof.key.nil? %>
-			<p>PROOF:</p>
-			<p><span style="color: #BE0000"><%= cl_image_tag booking.proof.key, alt: "proof", height: 300, crop: :fill %></span></p>
-		<% end %>
-
-		<% if booking.status =="Pending" %>
-			<td><%#= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
-			<%= form_for [:assassin, booking] do |t| %>
-				<p> Status:<%= booking.status %></p>
-				<%= t.hidden_field :status, :value=>"Accepted" %>
-				<%= t.submit "Accept the Job", class: 'btn btn-primary' %>
-			<% end %>
-			<td><%#= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
-			<%= simple_form_for [:assassin, booking] do |f| %>
-				<%= f.hidden_field :status, :value=>"Declined" %>
-				<%= f.submit "Decline the Job", class: 'btn btn-warning mt-3' %>
-			<% end %>
-		<% elsif booking.status == "Accepted" %>
-			<td><%#= link_to 'Mark as Complete', booking_path(booking), method: :patch, class: 'btn btn-danger' %></td>
-			<%= simple_form_for [:assassin, booking] do |f| %>
-				<p> Status:<%= booking.status %></p>
-				<%= f.hidden_field :status, :value=>"Verify" %>
-				<%= f.submit "Confirm Kill!", class: 'btn btn-danger' %>
-				<%= f.input :proof, as: :file, label: "Proof (Optional)" %>
-			<% end %>
-		<% elsif booking.status == "Declined" %>
-			<p class="fs-3">DECLINED</p>
-		<% elsif booking.status == "Verify" %>
-			<p class="fs-3">TARGET ELIMINATED</p>
-			<p class="fs-3">Waiting for Verification</p>
-		<% else %>
-			<p class="fs-3">TARGET ELIMINATED</p>
-			<p class="fs-3">Client Verified</p>
-		<% end %>
-	</div>
-	<div class="card-footer text-muted">
-		Due Date: <%= booking.deadline %>
-	</div>
+  <div class="card-header">
+    Target Name: <%= booking.target_name %> <br>
+    <br>
+    Target Location: <%= booking.target_location %>
+    <div class="map-container" id="map-container-<%= booking.id %>">
+      <%= render "bookings/booking_map", booking: booking %>
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <h3 class="card-title">Assignment # <%= booking.id %></h3>
+  <p> Details:<%= booking.details %></p>
+  <% if !booking.proof.key.nil? %>
+    <p>PROOF:</p>
+    <p><span style="color: #BE0000"><%= cl_image_tag booking.proof.key, alt: "proof", height: 300, crop: :fill %></span></p>
+  <% end %>
+  <% if booking.status =="Pending" %>
+    <td><%#= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
+    <%= form_for [:assassin, booking] do |t| %>
+      <p> Status:<%= booking.status %></p>
+      <%= t.hidden_field :status, :value=>"Accepted" %>
+      <%= t.submit "Accept the Job", class: 'btn btn-primary' %>
+    <% end %>
+    <td><%#= link_to 'Accept', booking_path(booking), method: :patch, class: 'btn btn-primary' %></td>
+    <%= simple_form_for [:assassin, booking] do |f| %>
+      <%= f.hidden_field :status, :value=>"Declined" %>
+      <%= f.submit "Decline the Job", class: 'btn btn-warning mt-3' %>
+    <% end %>
+  <% elsif booking.status == "Accepted" %>
+    <td><%#= link_to 'Mark as Complete', booking_path(booking), method: :patch, class: 'btn btn-danger' %></td>
+    <%= simple_form_for [:assassin, booking] do |f| %>
+      <p> Status:<%= booking.status %></p>
+      <%= f.hidden_field :status, :value=>"Verify" %>
+      <%= f.submit "Confirm Kill!", class: 'btn btn-danger' %>
+      <%= f.input :proof, as: :file, label: "Proof (Optional)" %>
+    <% end %>
+  <% elsif booking.status == "Declined" %>
+    <p class="fs-3">DECLINED</p>
+  <% elsif booking.status == "Verify" %>
+    <p class="fs-3">TARGET ELIMINATED</p>
+    <p class="fs-3">Waiting for Verification</p>
+  <% else %>
+    <p class="fs-3">TARGET ELIMINATED</p>
+    <p class="fs-3">Client Verified</p>
+  <% end %>
+</div>
+<div class="card-footer text-muted">
+  Due Date: <%= booking.deadline %>
+</div>
 </div>

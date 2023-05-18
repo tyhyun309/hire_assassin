@@ -15,38 +15,47 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+    this.mapContainers = document.querySelectorAll('[data-controller="map"]')
+
+    this.mapContainers.forEach((container) => {
+      const mapId = container.getAttribute('id')
+      const bookingId = mapId.split('-')[1] // Extract the booking ID from the container's ID
+
+      this.map = new mapboxgl.Map({
+        container: mapId,
+        style: 'mapbox://styles/mapbox/streets-v10'
+      })
+
+      const bookingMarkers = this.markersValue.filter((marker) => marker.booking.id == bookingId)
+
+      this.#addMarkersToMap(bookingMarkers)
+      this.#fitMapToMarkers(bookingMarkers)
     })
-
-    this.map.addControl(new mapboxgl.NavigationControl());
-
-    // Add zoom and rotation controls to the map.
-    // this.#addZoomToMap()
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
   }
 
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-
-      // Create a HTML element for your custom marker
-      const customMarker = document.createElement("div")
-      customMarker.innerHTML = marker.marker_html
-
-      // Pass the element as an argument to the new marker
-      new mapboxgl.Marker(customMarker)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
+  #addMarkersToMap(markers) {
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
     })
   }
 
-  #fitMapToMarkers() {
+  #fitMapToMarkers(markers) {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+
+    markers.forEach(marker => {
+      bounds.extend([marker.lng, marker.lat])
+    })
+
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
+  #addMarkersToMap(markers) {
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .addTo(this.map)
+    })
   }
 }
