@@ -25,19 +25,19 @@
 				</div>
 			</div>
 			<div class="cards-bookings">
-				<div class="cards-booking-active" data-display-bookings-target="active">
+				<div class="cards-booking-active card-scroll" data-display-bookings-target="active">
 					<h2>Active Jobs</h2>
 					<% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
 						<%= render "jobCard" , booking: booking %>
 					<% end %>
 				</div>
-				<div class="cards-booking-pending d-none"  data-display-bookings-target="pending">
+				<div class="cards-booking-pending card-scroll d-none"  data-display-bookings-target="pending">
 					<h2>New Jobs</h2>
 					<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
 						<%= render "jobCard" , booking: booking %>
 					<% end %>
 				</div>
-				<div class="cards-booking-history d-none"  data-display-bookings-target="completed">
+				<div class="cards-booking-history card-scroll d-none"  data-display-bookings-target="completed">
 					<h2>Completed Jobs</h2>
 					<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
 						<%= render "jobCard" , booking: booking %>
