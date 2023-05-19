@@ -8,29 +8,30 @@ class Assassin::BookingsController < ApplicationController
 
     @bookings_with_markers = @bookings.geocoded.map do |booking|
       {
-        booking: booking,
+        booking:,
         lat: booking.latitude,
         lng: booking.longitude,
-        info_window_html: render_to_string(partial: "bookings/info_window", locals: {booking: booking}),
+        info_window_html: render_to_string(partial: "bookings/info_window", locals: { booking: }),
         marker_html: render_to_string(partial: "bookings/marker")
       }
     end
 
-    if params[:query].present?
-      @bookings = @bookings.search_by_name_location_status_detail(params[:query])
-    end
+    @bookings = @bookings.search_by_name_location_status_detail(params[:query]) if params[:query].present?
 
     @booking = Booking.new # Just created for render simple form
 
     @score = 0
     @assassin.bookings.each do |booking|
-      if booking.status == 'Completed' && booking.rating.present?
-        @score += booking.rating
-      end
+      @score += booking.rating if booking.status == 'Completed' && booking.rating.present?
     end
-    @score /= @assassin.bookings.count
+    @score /= if @assassin.bookings.select { |booking| booking.rating.present? }.count.zero?
+                1
+              else
+                @assassin.bookings.select do |booking|
+                  booking.rating.present?
+                end.count
+              end
     @score = @score.round(2)
-
   end
 
   def update
@@ -50,6 +51,7 @@ class Assassin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :proof, :review, :rating)
+    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :proof, :review,
+                                    :rating)
   end
 end
