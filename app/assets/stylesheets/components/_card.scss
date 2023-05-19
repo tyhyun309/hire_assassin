@@ -22,8 +22,8 @@
 
 .card-product {
   overflow: hidden;
-  height: 256px;
-  width: 256px;
+  height: 276px;
+  width: 276px;
   background: #d9d9d9;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
 }
@@ -56,8 +56,15 @@
 }
 
 .card-product .card-product-infos {
-  padding: 3px;
+  padding: 1px;
 }
+
+// .card-product-pic {
+//   margin: auto;
+//   &:img {
+//     object-fit: cover;
+//   }
+// }
 
 // CARD FOR ASSASSIN(SHOW) and BOOKING(SHOW)
 // ----- big card --------------------
