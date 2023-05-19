@@ -15,10 +15,15 @@
   color: white;
 }
 
+.card-title {
+  margin-bottom: 8px;
+
+}
+
 .card-product {
   overflow: hidden;
-  height: 256px;
-  width: 256px;
+  height: 276px;
+  width: 276px;
   background: #d9d9d9;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
   background: linear-gradient(135deg, #f5f7fa 0%, #808284 100%);
@@ -53,22 +58,33 @@
 }
 
 .card-product .card-product-infos {
-  padding: 3px;
+  padding: 1px;
 }
+
+// .card-product-pic {
+//   margin: auto;
+//   &:img {
+//     object-fit: cover;
+//   }
+// }
 
 // CARD FOR ASSASSIN(SHOW) and BOOKING(SHOW)
 // ----- big card --------------------
+.assassin-desc {
+  color: $black;
+}
 
 .cards-profile {
+
   background: #BBBBBB;
   background: linear-gradient(135deg, #979797 0%, #3c3c3c 100%);
   box-shadow: 5px 5px 5px rgba(115, 115, 115, 0.2);
   //width: 1045px;
-  min-width: fit-content;
+  // min-width: fit-content;
 }
 
 .cards-profile p {
-  color: white;
+  color: $white;
   font-size: 20px;
   padding: 11px;
 }
@@ -102,15 +118,62 @@
 }
 
 // assassin bookings
+.card-hide {
+  display: none;
+}
+
+.card-show {
+  display: block;
+}
+
+.cards-bookings {
+  height: 200vh;
+}
+
+.grid-a-bookings {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 16px;
+}
+
+.grid-a-profile-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  color: $black;
+}
+
+.cards-a-bookings-info {
+  height: 100%;
+}
+
+.cards-booking-active {
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.card-sticky-top {
+  position: sticky;
+  top: 0px;
+}
+
+.card-job {
+  border: 1px solid $red;
+  padding: 16px;
+}
+
 .cards-2column {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
 }
 
+.cards-bookings-search {
+  border-bottom: 2px solid $black;
+}
+
 // Cards for Booking
 .card-booking {
-  margin: 16px
+  margin: 16px;
 }
 
 .card-profile .card-profile-infos {

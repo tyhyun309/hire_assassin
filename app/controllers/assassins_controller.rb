@@ -15,7 +15,13 @@ class AssassinsController < ApplicationController
     @assassin.bookings.each do |booking|
       @score += booking.rating if booking.status == 'Completed' && booking.rating.present?
     end
-    @score /= @assassin.bookings.select { |booking| booking.rating.present? }.count
+    @score /= if @assassin.bookings.select { |booking| booking.rating.present? }.count.zero?
+                1
+              else
+                @assassin.bookings.select do |booking|
+                  booking.rating.present?
+                end.count
+              end
     @score = @score.round(2)
   end
 
