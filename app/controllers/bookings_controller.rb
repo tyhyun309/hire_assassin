@@ -3,6 +3,9 @@ class BookingsController < ApplicationController
   # User can see all of their bookings
   def index
     @bookings = policy_scope(Booking)
+    if params[:query].present?
+      @bookings = @bookings.search_by_name_location_status(params[:query])
+    end
     # ? Does device do this auotmatically? Fix this tomorrow.
     # The `geocoded` scope filters only bookings with coordinates
     # I don't think we need this code because it is in the _booking_map.html.erb
@@ -24,6 +27,7 @@ class BookingsController < ApplicationController
     @booking.assassin = @assassin
     @user = current_user
     @booking.user = @user
+
     authorize @assassin
     if @booking.save
       redirect_to bookings_path
@@ -50,6 +54,6 @@ class BookingsController < ApplicationController
 
   # what if you only allow to update one attribute for a specific action? do we still make a global strong params?
   def booking_params
-    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline)
+    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :review, :rating)
   end
 end

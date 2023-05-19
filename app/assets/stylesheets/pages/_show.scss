@@ -1,0 +1,11 @@
+.review ul {
+  color: $red;
+  list-style: none;
+  padding-left: 1rem;
+  text-indent: -0.7rem;
+
+  li::before {
+  content: "💎";
+  padding: 5px;
+}
+}

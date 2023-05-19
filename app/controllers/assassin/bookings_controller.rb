@@ -5,6 +5,7 @@ class Assassin::BookingsController < ApplicationController
     # Does devise chooses the bookings automatically?
     @assassin = current_user.assassin
     @bookings = policy_scope([:assassin, Booking])
+
     @bookings_with_markers = @bookings.geocoded.map do |booking|
       {
         booking: booking,
@@ -14,6 +15,22 @@ class Assassin::BookingsController < ApplicationController
         marker_html: render_to_string(partial: "bookings/marker")
       }
     end
+
+    if params[:query].present?
+      @bookings = @bookings.search_by_name_location_status_detail(params[:query])
+    end
+
+    @booking = Booking.new # Just created for render simple form
+
+    @score = 0
+    @assassin.bookings.each do |booking|
+      if booking.status == 'Completed' && booking.rating.present?
+        @score += booking.rating
+      end
+    end
+    @score /= @assassin.bookings.count
+    @score = @score.round(2)
+
   end
 
   def update
@@ -33,6 +50,6 @@ class Assassin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :proof)
+    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :proof, :review, :rating)
   end
 end
