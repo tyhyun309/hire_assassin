@@ -64,10 +64,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_025406) do
     t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "review"
-    t.float "rating"
     t.float "latitude"
     t.float "longitude"
+    t.text "review"
+    t.float "rating"
     t.index ["assassin_id"], name: "index_bookings_on_assassin_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
