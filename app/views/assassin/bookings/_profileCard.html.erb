@@ -1,20 +1,20 @@
 <div class="cards-profile card-sticky-top mt-5">
 	<h2><%= @assassin.name  %>'s PROFILE</h2>
 	<div class="cards-profile">
-		<%= cl_image_tag @assassin.photo.key, width: 250 , height: 250, crop: :fill, gravity: :faces, class: "mb-3" %>
+		<%= cl_image_tag @assassin.photo.key, width: 350 , height: 350, crop: :fill, gravity: :faces, class: "mb-3" %>
 		<div class = "card-profile-infos">
 			<h3 class ='card-title grid-a-profile-info'>
-				<span style = "color:black">Name : </span>
+				<span style = "color:black">Name</span>
 				<div class = "d-flex justify-content-between">
-					<div><%= @assassin.name %></div>
+					<div>: <%= @assassin.name %></div>
 					<div>
 						<%= link_to "Edit Profile", edit_assassin_path(@assassin), class: "btn btn-dark" %>
 					</div>
 				</div>
 			</h3>
-			<h4 class='card-title grid-a-profile-info'><span style="color:black">Weapon : </span><%= @assassin.weapon %></h4>
-			<h4 class='card-title grid-a-profile-info'><span style="color:black">Rating : </span><%= @score %></h4>
-			<h4 class='card-title grid-a-profile-info'><span style="color:black">Rate : </span> <span style="color:black"><%= @assassin.price %> 💰₿</span></h4>
+			<h4 class='card-title grid-a-profile-info'><span style="color:black">Weapon</span>: <%= @assassin.weapon %></h4>
+			<h4 class='card-title grid-a-profile-info'><span style="color:black">Rating</span>: <%= @score %></h4>
+			<h4 class='card-title grid-a-profile-info'><span style="color:black">Rate</span> <span style="color:black">: <%= @assassin.price %> 💰₿</span></h4>
 
 		</div>
 		<div class="assassin-desc mt-5">

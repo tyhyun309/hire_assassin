@@ -107,6 +107,17 @@
 }
 
 // assassin bookings
+.card-hide {
+  display: none;
+}
+
+.card-show {
+  display: block;
+}
+
+.cards-bookings {
+  height: 200vh;
+}
 
 .grid-a-bookings {
   display: grid;
@@ -121,11 +132,12 @@
 }
 
 .cards-a-bookings-info {
-
+  height: 100%;
 }
 
 .cards-booking-active {
-  overflow: scroll;
+  overflow-y: scroll;
+  height: 90%;
 }
 
 .card-sticky-top {
@@ -133,6 +145,10 @@
   top: 0px;
 }
 
+.card-job {
+  border: 1px solid $red;
+  padding: 16px;
+}
 
 .cards-2column {
   display: grid;
@@ -140,9 +156,13 @@
   grid-gap: 30px;
 }
 
+.cards-bookings-search {
+  border-bottom: 2px solid $black;
+}
+
 // Cards for Booking
 .card-booking {
-  margin: 16px
+  margin: 16px;
 }
 
 .card-profile .card-profile-infos {
