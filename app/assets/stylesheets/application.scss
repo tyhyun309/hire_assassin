@@ -11,3 +11,12 @@
 @import "components/index";
 @import "pages/index";
 @import "pages/home";
+
+body {
+  background-color: rgb(55, 54, 54); /* Replace with your desired background color */
+  background: linear-gradient(135deg, #373636 0%, #808284 100%)
+}
+
+h1, h2 {
+  color: white;
+}
