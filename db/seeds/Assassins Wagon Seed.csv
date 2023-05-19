@@ -2,6 +2,7 @@ Name,Nickname,Weapon,Description,Price
 Joyce,,Surfboard Dagger,"Joyce harnesses her passion for surfing to conceal a deadly secret. Her surfboard doubles as a lethal weapon, with a concealed dagger hidden within its core. With a swift and unexpected maneuver, she uses the surfboard to strike her target, delivering a deadly blow while maintaining her love for the ocean",0.8
 Arthur,Excalibur's Champion,Blade of Legends,"I am a king that holds a legendary sword with a rich history, said to possess the spirits of valiant warriors. My special ability is whirlwind motion, I can slash your enemy with blinding speed and dealing damage to multiple targets.",99
 Yin,,Hidden Blade,"To kill with stealth and precision, Yin swiftly extends her arm, revealing a hidden blade concealed within her cap. With a swift and silent strike, she targets the vital points of her target, ensuring a swift and deadly execution.",1.3
+
 Donald,Gambler's Grim Reaper,Dice of Destiny,"Donald, also known as the Gambler's Grim Reaper, is an enigmatic assassin who specializes in using games to carry out his deadly work. With his expert knowledge of the gambling industry, he has become a master of games of chance and strategy, and his weapon of choice is the Dice of Destiny.
 
 Despite his love of board games, Donald's invitation to play is not one to be taken lightly. He uses his games as a deadly trap for his targets, and even the choice of game is left to chance. Whether it's a game of Monopoly, Risk, or something more obscure, Donald always seems to come out on top, leaving his opponents with nothing but regret.
@@ -57,12 +58,15 @@ Despite his unique approach to assassination, Joseph takes his work very serious
 In the assassin community, Joseph is known for his unusual weapon of choice and his expertise in Python. His collection of snakes is affectionately referred to as Jupyter, a nod to the popular programming environment used by many Python developers.
 
 Overall, Joseph is a lethal force to be reckoned with, using his unique skills and knowledge to take down his targets in a way that no one else can.",3.21
+
 Markus,The Techno Reaper,Sonic Disruptor Gloves,"Markus utilizes his love for techno music to his advantage. His Sonic Disruptor Gloves emit powerful sound waves that can disorient and incapacitate targets, rendering them helpless.",3.2
 DanielM,The Coding Engineer,Codebreaker Blade,"Daniel's proficiency in coding and civil engineering serves him well in his role as an assassin. His Codebreaker Blade is a technologically advanced weapon that can bypass security systems, allowing him to reach his targets undetected.",2.4
 Ameesha,The French Whisperer,Poisoned Quill Pen,"Ameesha's linguistic skills and knowledge of French aid her in her covert operations. She discreetly administers lethal toxins using a specially designed quill pen, making it seem like a mere accident.",2.6
 Phuvit,The Deadly Striker,Precision Football,Phuvit's passion for football translates into his deadly precision on the field and in his missions. He wields a modified football that contains a hidden compartment filled with poisonous darts. His accurate throws ensure a swift and lethal end for his targets.,1.8
 Juan,Iron Fist,Dumbbell Throwing,"I will deliver a powerful attack with my dumbell that creates shockwaves upon impact, damaging your enemy with a slow death",3
+
 Rika,Alcina Dimitrescu,Rubber Duck Launcher,"My blade releases a viral mist upon impact, infecting enemies and gradually sapping their health. That is what I call a slow and painful death.",9
+
 Mei,Sweet Curator,Celestial Harp,A mysterious fighter who uses her harp to play a mesmerising tune that puts her enemies to sleep. She is also a skilled healer and can use her harp to restore her allies' health. ,5.3
 Jun,Lightning Jab,Knockout Gloves,"My spinning uppercut, creates a tornado that damages and stuns your target. I am also a skilled acrobat and can use his agility to dodge his enemies' attacks. They will never know what hit them.",6.9
 DanielS,Digital Dungeon Master,Pixel Sword,"My sword the harnesses the pixelated energy of virtual worlds, allowing me to bring your enemy into my virtual dungeon forever.",4
@@ -80,6 +84,7 @@ Lucca,The Digital Hitman,intelligence,"Lucca is a master of computer science, ar
 
 Lucca's intelligence is not limited to computers, though. He is also a master strategist, capable of analyzing complex situations and devising the most efficient and effective course of action. His ability to think on his feet and adapt to changing circumstances makes him a formidable opponent, and he can quickly turn the tide of any battle with his cunning.",
 Taylor,The Death Painter,The Death Note,"Taylor is an assassin who wields a powerful weapon: The Death Note. Similar to the popular manga and anime series, Taylor's Death Note has the ability to kill anyone whose face is drawn inside it, as long as the writer knows their face. With this deadly tool at her disposal, Taylor is a force to be reckoned with. She is a skilled observer, often taking note of her targets' habits, routines, and weaknesses before striking. Once she has their name and face, she can easily dispatch them with a stroke of her pen.",
+
 Cai, The Frog Assassin,Cai's own specially bred frog,"Her weapon of choice is her own specially bred frog, which is highly toxic and capable of killing within minutes. She is a master of handling and training these frogs, using their deadly venom to dispatch her targets with ease.
 
 Cai's love for these creatures is evident in the care and attention she puts into their breeding and training. She has spent years perfecting her techniques and developing new ways to use her frog companions in her assassinations. ",
@@ -97,3 +102,4 @@ Sarah,The giggler,Energizer Bunny,"Energizer Bunny is always on the move, leavin
 Sylvain,Invoice Master,Coin Cannon,"Penny Pincher Extraordinaire, fights with his mighty Coin Cannon. He fires an endless barrage of coins at his foes, demanding payment for crossing his path. His weapon doubles as a piggy bank, so he never runs out of ammunition or his favorite topic of conversation— Have you paid your invoice?!",
 Gilary,Confetti Master,"Giggle Generator,","Giggle Generator, wields the Jester's Jinx. This magical staff releases bursts of colorful confetti and showers of ticklish feathers, leaving enemies in fits of uncontrollable laughter. Gilary's infectious giggles and playful antics turn any battle into a joyous carnival, making her the heart and soul of the group. Beware, because her mischievous pranks and never-ending laughter can turn even the fiercest foes into helpless, giggling messes.",
 Celso,Samba Samurai,Capoeira,"Samba Samurai, fights with the Capoeira Cutlass. He combines the art of capoeira with masterful swordplay, gracefully dancing through battles with acrobatic flips and spins. His strikes are as quick and precise as the beats of a samba drum, and his footwork mesmerizes both allies and enemies alike. Celso's infectious energy and vibrant personality infuse every battle with the spirit of Brazil, leaving a trail of rhythmic energy and joyful celebration in his wake.",
+

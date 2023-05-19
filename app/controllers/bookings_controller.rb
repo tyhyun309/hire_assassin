@@ -7,6 +7,17 @@ class BookingsController < ApplicationController
       @bookings = @bookings.search_by_name_location_status(params[:query])
     end
     # ? Does device do this auotmatically? Fix this tomorrow.
+    # The `geocoded` scope filters only bookings with coordinates
+    # I don't think we need this code because it is in the _booking_map.html.erb
+    @bookings_with_markers = @bookings.geocoded.map do |booking|
+      {
+        booking: booking,
+        lat: booking.latitude,
+        lng: booking.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {booking: booking}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   # User can create a booking in the Assassin's page
@@ -27,6 +38,7 @@ class BookingsController < ApplicationController
 
   def update
     authorize @booking
+
     if @booking.update(booking_params)
       redirect_to bookings_path
     else
