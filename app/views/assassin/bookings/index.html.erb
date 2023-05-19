@@ -6,10 +6,10 @@
 			<h1>Assassin's Bookings</h1>
 
 			<div class="d-flex justify-content-around">
-				<button class="btn btn-outline-dark"data-action="click->display-bookings#pending">New Jobs <%= "(#{@bookings.select{|booking| booking.status == "Pending"}.count})" %>
+				<button class="btn btn-secondary"data-action="click->display-bookings#pending">New Jobs <%= "(#{@bookings.select{|booking| booking.status == "Pending"}.count})" %>
 				</button>
-				<button class="btn btn-outline-dark"data-action="click->display-bookings#active">Active Jobs <%= "(#{@bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.count})" %></button>
-				<button class="btn btn-outline-dark"data-action="click->display-bookings#history">Job History</button>
+				<button class="btn btn-secondary"data-action="click->display-bookings#active">Active Jobs <%= "(#{@bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.count})" %></button>
+				<button class="btn btn-secondary"data-action="click->display-bookings#history">Job History</button>
 			</div>
 			<div class="cards-bookings-search">
 				<div class="row justify-content-center">
