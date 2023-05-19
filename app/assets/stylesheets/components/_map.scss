@@ -6,3 +6,19 @@
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
+.map-container {
+  width: 80%;
+  height: 300px;
+  background-color: $gray;
+  align-items: center;
+  margin:auto;
+}
+
+.map-assassin {
+  color: $light-gray;
+}
+
+.map-text {
+  margin: auto;
+}

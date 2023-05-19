@@ -15,6 +15,11 @@
   color: white;
 }
 
+.card-title {
+  margin-bottom: 8px;
+
+}
+
 .card-product {
   overflow: hidden;
   height: 256px;
@@ -56,16 +61,20 @@
 
 // CARD FOR ASSASSIN(SHOW) and BOOKING(SHOW)
 // ----- big card --------------------
+.assassin-desc {
+  color: $black;
+}
 
 .cards-profile {
-  background: #BBBBBB;
+  background: $medium-gray;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
+  padding: 16px;
   //width: 1045px;
-  min-width: fit-content;
+  // min-width: fit-content;
 }
 
 .cards-profile p {
-  color: white;
+  color: $white;
   font-size: 20px;
   padding: 11px;
 }
@@ -98,15 +107,62 @@
 }
 
 // assassin bookings
+.card-hide {
+  display: none;
+}
+
+.card-show {
+  display: block;
+}
+
+.cards-bookings {
+  height: 200vh;
+}
+
+.grid-a-bookings {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 16px;
+}
+
+.grid-a-profile-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  color: $black;
+}
+
+.cards-a-bookings-info {
+  height: 100%;
+}
+
+.cards-booking-active {
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.card-sticky-top {
+  position: sticky;
+  top: 0px;
+}
+
+.card-job {
+  border: 1px solid $red;
+  padding: 16px;
+}
+
 .cards-2column {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
 }
 
+.cards-bookings-search {
+  border-bottom: 2px solid $black;
+}
+
 // Cards for Booking
 .card-booking {
-  margin: 16px
+  margin: 16px;
 }
 
 .card-profile .card-profile-infos {

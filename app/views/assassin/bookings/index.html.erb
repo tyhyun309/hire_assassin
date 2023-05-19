@@ -1,36 +1,66 @@
-
 <div class="container">
-  <%= render "shared/profileCard", score: @score , assassin: @assassin, booking: @booking%>
-  <h1>Assassin's Bookings</h1>
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
-      <%= form_with url: assassin_my_a_bookings_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
+	<div class="grid-a-bookings">
+		<%= render "profileCard", score: @score , assassin: @assassin, booking: @booking%>
+
+		<div class="cards-a-bookings-info mt-5" data-controller="display-bookings">
+			<h1>Assassin's Bookings</h1>
+
+			<div class="d-flex justify-content-around">
+				<button data-action="click->display-bookings#pending">New Jobs</button>
+				<button data-action="click->display-bookings#active">Active Jobs</button>
+				<button data-action="click->display-bookings#history">Job History</button>
+			</div>
+			<div class="cards-bookings-search">
+				<div class="row justify-content-center">
+					<div class="col-sm-8 my-3">
+						<%= form_with url: assassin_my_a_bookings_path, method: :get, class: "d-flex" do %>
+							<%= text_field_tag :query,
               params[:query],
               class: "form-control",
-              placeholder: "Find Your Assassin"%>
-        <%= submit_tag "Search", name: "", class: "btn btn-dark" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="cards-2column mt-4">
-    <div class="cards-booking-pending">
-      <h2>New Jobs</h2>
-      <% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
-        <%= render "jobCard" , booking: booking %>
-      <% end %>
-    </div>
-    <div class="cards-booking-active">
-      <h2>Active Jobs</h2>
-      <% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
-        <%= render "jobCard" , booking: booking %>
-      <% end %>
-    </div>
-  </div>
-  <div class="cards-booking-history">
-    <h2>Completed Jobs</h2>
-    <% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
-      <%= render "jobCard" , booking: booking %>
-    <% end %>
-  </div>
+              placeholder: "Find my booking"%>
+							<%= submit_tag "Search", name: "", class: "btn btn-dark" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="cards-bookings">
+				<div class="cards-booking-active" data-display-bookings-target="active">
+					<h2>Active Jobs</h2>
+					<% @bookings.select{|booking| booking.status == "Verify" || booking.status == "Accepted"}.sort_by(&:status).each do |booking| %>
+						<%= render "jobCard" , booking: booking %>
+					<% end %>
+				</div>
+				<div class="cards-booking-pending d-none"  data-display-bookings-target="pending">
+					<h2>New Jobs</h2>
+					<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
+						<%= render "jobCard" , booking: booking %>
+					<% end %>
+				</div>
+				<div class="cards-booking-history d-none"  data-display-bookings-target="completed">
+					<h2>Completed Jobs</h2>
+					<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
+						<%= render "jobCard" , booking: booking %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<!--
+			<div class="cards-2column mt-4">
+				<div class="cards-booking-pending">
+					<h2>New Jobs</h2>
+					<% @bookings.select{|booking| booking.status == "Pending"}.each do |booking| %>
+						<%= render "jobCard" , booking: booking %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="cards-booking-history">
+				<h2>Completed Jobs</h2>
+				<% @bookings.select{|booking| booking.status == "Completed"}.each do |booking| %>
+					<%= render "jobCard" , booking: booking %>
+				<% end %>
+			</div>
+      -->
