@@ -1,14 +1,17 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-// Comment by JOYCE: added two fonts: Creepster and Boogaloo
+// Original fonts
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+// New fonts added
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 // Define fonts for body and headers
 // Comment by JOYCE: Feel free to use them for your own view.
-$primary-font: "Creepster";
-$secondary-font: "Boogaloo";
+$primary-font: "Montserrat";
+$secondary-font: "Raleway";
 
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
