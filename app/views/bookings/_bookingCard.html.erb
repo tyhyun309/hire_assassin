@@ -1,75 +1,71 @@
 <div class="card text-center card-container">
-
-	<div class="card-body">
-		<div class="d-flex justify-content-center align-items-center">
-			<%= cl_image_tag booking.assassin.photo.key, height: 300, crop: :fill %>
-			<div class="details-container"><br>
-				<p>ASSASSIN NAME: <span style="color: #BE0000"><%= booking.assassin.name %></span></p>
-				<p>TARGET NAME: <span style="color: #BE0000"><%= booking.target_name %></span></p>
-				<p>TARGET LOCATION: <span style="color: #BE0000"><%= booking.target_location %></span></p>
-				<p>BOOKING STATUS: <span style="color: #BE0000"><%= booking.status %></span></p>
-				<p>DEADLINE: <span style="color: #BE0000"><%= booking.deadline %></span></p>
-			</div>
-		</div>
-	</div>
-	<div>
-		<% if booking.status == "Verify" || booking.status == "Completed" %>
-			<% if !booking.proof.key.nil? %>
-				<p>PROOF:</p>
-				<p><span style="color: #BE0000"><%= cl_image_tag booking.proof.key, alt: "proof", height: 300, crop: :fill %></span></p>
-			<% end %>
-			<% if booking.status == "Verify" %>
-				<%= form_for booking do |t| %>
-					<%= t.hidden_field :status, :value=>"Completed" %>
-					<%= t.submit "I Verify the Job is Done", class: 'btn btn-primary' %>
-				<% end %>
-			<% elsif booking.status == "Completed" %>
-				<h2>Concluded</h2>
-				<% if booking.rating.nil? %>
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#writeReview">
-						Write a review
-					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="writeReview" tabindex="-1" aria-labelledby="writeReviewLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h1 class="modal-title fs-5" id="writeReviewLabel">Review</h1>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<%= simple_form_for(booking) do |f| %>
-									<div class="modal-body">
-										<%= f.input :rating %>
-										<%= f.input :review, as: :text %>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<%= f.submit 'Save review', class: "btn btn-primary" %>
-									</div>
-								<% end %>
-							</div>
-						</div>
-					</div>
-				<% else %>
-					<div>
-						<p>Rating: <%= booking.rating %></p>
-						<p>Review: <%= booking.review %></p>
-					</div>
-				<% end %>
-			<% elsif booking.status == "Declined" %>
-				<h2>Rejected</h2>
-			<% end %>
-		<% end %>
-	</div>
-	<div class="map-container" id="map-container-<%= booking.id %>">
-		<%= render "booking_map", booking: booking %>
-	</div>
-</div>
-<div class="card-header">
-	<p>MY REQUEST:</p>
-	<p><%= booking.details %></p>
-</div>
+  <div class="card-body">
+    <div class="d-flex justify-content-center align-items-center">
+      <%= cl_image_tag booking.assassin.photo.key, height: 200, crop: :fill %>
+      <div class="details-container"><br>
+        <p>ASSASSIN NAME: <span style="color: #BE0000"><%= booking.assassin.name %></span></p>
+        <p>TARGET NAME: <span style="color: #BE0000"><%= booking.target_name %></span></p>
+        <p>TARGET LOCATION: <span style="color: #BE0000"><%= booking.target_location %></span></p>
+        <p>BOOKING STATUS: <span style="color: #BE0000"><%= booking.status %></span></p>
+        <p>DEADLINE: <span style="color: #BE0000"><%= booking.deadline %></span></p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% if booking.status == "Verify" || booking.status == "Completed" %>
+      <% if !booking.proof.key.nil? %>
+        <p>PROOF:</p>
+        <p><span style="color: #BE0000"><%= cl_image_tag booking.proof.key, alt: "proof", height: 300, crop: :fill %></span></p>
+      <% end %>
+      <% if booking.status == "Verify" %>
+        <%= form_for booking do |t| %>
+          <%= t.hidden_field :status, :value=>"Completed" %>
+          <%= t.submit "I Verify the Job is Done", class: 'btn btn-primary' %>
+        <% end %>
+      <% elsif booking.status == "Completed" %>
+        <h2>Concluded</h2>
+        <% if booking.rating.nil? %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#writeReview">
+            Write a review
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="writeReview" tabindex="-1" aria-labelledby="writeReviewLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="writeReviewLabel">Review</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <%= simple_form_for(booking) do |f| %>
+                  <div class="modal-body">
+                    <%= f.input :rating %>
+                    <%= f.input :review, as: :text %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <%= f.submit 'Save review', class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div>
+            <p>Rating: <%= booking.rating %></p>
+            <p>Review: <%= booking.review %></p>
+          </div>
+        <% end %>
+      <% elsif booking.status == "Declined" %>
+        <h2>Rejected</h2>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="map-container" id="map-container-<%= booking.id %>">
+    <%= render "booking_map", booking: booking %>
+  </div>
+  <div class="card-header">
+    <p>MY REQUEST:</p>
+    <p><%= booking.details %></p>
+  </div>
 </div>
