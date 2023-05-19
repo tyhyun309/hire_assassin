@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
     # ? Does device do this auotmatically? Fix this tomorrow.
     # The `geocoded` scope filters only bookings with coordinates
-
+    # I don't think we need this code because it is in the _booking_map.html.erb
     @bookings_with_markers = @bookings.geocoded.map do |booking|
       {
         booking: booking,
