@@ -2,9 +2,9 @@ class AssassinsController < ApplicationController
   def index
     # @assassins = Assassin.all
     @assassins = policy_scope(Assassin)
-    if params[:query].present?
-      @assassins = @assassins.search_by_name_weapon_description(params[:query])
-    end
+    return unless params[:query].present?
+
+    @assassins = @assassins.search_by_name_weapon_description(params[:query])
   end
 
   def show
@@ -13,11 +13,9 @@ class AssassinsController < ApplicationController
     @booking = Booking.new
     @score = 0
     @assassin.bookings.each do |booking|
-      if booking.status == 'Completed' && booking.rating.present?
-        @score += booking.rating
-      end
+      @score += booking.rating if booking.status == 'Completed' && booking.rating.present?
     end
-    @score /= @assassin.bookings.count
+    @score /= @assassin.bookings.select { |booking| booking.rating.present? }.count
     @score = @score.round(2)
   end
 
