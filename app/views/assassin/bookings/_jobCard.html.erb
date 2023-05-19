@@ -40,6 +40,13 @@
 		<% else %>
 			<p class="fs-3">TARGET ELIMINATED</p>
 			<p class="fs-3">Client Verified</p>
+			<% if booking.rating.present? %>
+				<div>
+					<h4>Client's Review:</h4>
+					<p>Rating: <%= booking.rating %></p>
+					<p>Review: <%= booking.review %></p>
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 	<div class="card-footer text-muted">
