@@ -1,6 +1,6 @@
 .banner {
   background-size: cover;
-  background-position: center;
+  background-position: center bottom 30%;
   padding: 150px 0;
   filter: grayscale(100%);
   position: relative;
@@ -17,9 +17,10 @@
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 70px;
+  font-size: 50px;
   font-weight: bold;
   font-family: $primary-font;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
   filter: none;
 }
 
@@ -27,6 +28,6 @@
   font-size: 30px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
   font-family: $primary-font;
 }

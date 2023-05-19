@@ -26,6 +26,8 @@
   width: 276px;
   background: #d9d9d9;
   box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, #f5f7fa 0%, #808284 100%);
+  box-shadow: 3px 3px 8px rgba(255, 255, 255, 0.9);
 }
 .card-product-infos {
   display: flex;
@@ -73,9 +75,10 @@
 }
 
 .cards-profile {
-  background: $medium-gray;
-  box-shadow: 5px 5px 1px rgba(0,0,0,0.2);
-  padding: 16px;
+
+  background: #BBBBBB;
+  background: linear-gradient(135deg, #979797 0%, #3c3c3c 100%);
+  box-shadow: 5px 5px 5px rgba(115, 115, 115, 0.2);
   //width: 1045px;
   // min-width: fit-content;
 }
@@ -95,6 +98,7 @@
   height: 100%;
   width: 350px;
   object-fit: cover;
+  padding: 15px;
 }
 
 .card-profile h2 {
