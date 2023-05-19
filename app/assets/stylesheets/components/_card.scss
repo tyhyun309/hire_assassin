@@ -147,8 +147,11 @@
 }
 
 .cards-booking-active {
-  overflow-y: scroll;
   height: 90%;
+}
+
+.card-scroll {
+  overflow-y: scroll;
 }
 
 .card-sticky-top {
