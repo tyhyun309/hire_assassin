@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div >
-		<% if booking.status == "Verify" || booking.status == "Completed"%>
+		<% if booking.status == "Verify" || booking.status == "Completed" || booking.status == "Declined" %>
 			<% if !booking.proof.key.nil? %>
 				<p>PROOF:</p>
 				<p><span style="color: #BE0000"><%= cl_image_tag booking.proof.key, alt: "proof", height: 300, crop: :fill %></span></p>
@@ -24,6 +24,8 @@
 				<% end %>
 			<% elsif booking.status == "Completed" %>
 				<h2>Concluded</h2>
+			<% elsif booking.status == "Declined" %>
+				<h2>Rejected</h2>
 			<% end %>
 		<% end %>
 	</div>
