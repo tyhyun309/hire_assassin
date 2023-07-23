@@ -1,0 +1,2 @@
+class WatchMovie < ApplicationRecord
+end
