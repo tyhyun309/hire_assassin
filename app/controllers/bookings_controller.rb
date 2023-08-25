@@ -54,6 +54,8 @@ class BookingsController < ApplicationController
 
   # what if you only allow to update one attribute for a specific action? do we still make a global strong params?
   def booking_params
-    params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :review, :rating)
+    params.require(:booking).permit(
+      :status, :details, :target_name, :target_location, :deadline, :review, :rating, :assa_booking_id
+    )
   end
 end

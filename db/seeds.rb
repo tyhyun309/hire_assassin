@@ -56,7 +56,7 @@ puts "There are now #{Assassin.count} rows in the Assassin table"
 
 puts "Creating bookings"
 
-100.times do
+50.times do
   booking = Booking.new(
     target_name: Faker::JapaneseMedia::FmaBrotherhood.character,
     target_location: Faker::Address.full_address,
@@ -81,7 +81,7 @@ end
   booking.save
 end
 
-200.times do
+100.times do
   booking = Booking.new(
     target_name: Faker::JapaneseMedia::SwordArtOnline.real_name,
     target_location: Faker::Address.full_address,

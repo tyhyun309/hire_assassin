@@ -70,6 +70,6 @@ class AssassinsController < ApplicationController
   end
 
   def assassin_params
-    params.require(:assassin).permit(:name, :weapon, :description, :price, :photo)
+    params.require(:assassin).permit(:name, :weapon, :description, :price, :photo, :assa_assassin_id)
   end
 end
