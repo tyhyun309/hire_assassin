@@ -1,6 +1,7 @@
 class Assassin < ApplicationRecord
-  belongs_to :user
-  has_many :bookings
+  self.table_name = "assa_assassins"
+  belongs_to :user, foreign_key: "assa_user_id"
+  has_many :bookings, foreign_key: "assa_assassin_id"
   has_one_attached :photo
   validates :name, presence: true
   validates :price, presence: true

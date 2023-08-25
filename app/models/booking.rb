@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
-  belongs_to :assassin
-  belongs_to :user
+  self.table_name = "assa_bookings"
+  belongs_to :assassin, foreign_key: "assa_assassin_id"
+  belongs_to :user, foreign_key: "assa_user_id"
 
   validates :target_name, presence: true
   validates :deadline, presence: true
