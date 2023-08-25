@@ -1,2 +1,0 @@
-class WatchList < ApplicationRecord
-end

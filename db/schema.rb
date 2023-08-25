@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_23_141632) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_25_054439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,36 +85,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_141632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "watch_bookmarks", force: :cascade do |t|
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "watch_movie_id", null: false
-    t.bigint "watch_list_id", null: false
-    t.index ["watch_list_id"], name: "index_watch_bookmarks_on_watch_list_id"
-    t.index ["watch_movie_id"], name: "index_watch_bookmarks_on_watch_movie_id"
-  end
-
-  create_table "watch_lists", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "watch_movies", force: :cascade do |t|
-    t.string "title"
-    t.string "overview"
-    t.string "rating"
-    t.string "poster_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assassins", "users"
   add_foreign_key "bookings", "assassins"
   add_foreign_key "bookings", "users"
-  add_foreign_key "watch_bookmarks", "watch_lists"
-  add_foreign_key "watch_bookmarks", "watch_movies"
 end
