@@ -52,6 +52,6 @@ class Assassin::BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:status, :details, :target_name, :target_location, :deadline, :proof, :review,
-                                    :rating)
+                                    :rating, :assa_booking_id, :assa_assassin_id, :assa_user_id)
   end
 end

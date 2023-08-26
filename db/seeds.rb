@@ -81,7 +81,7 @@ end
   booking.save
 end
 
-100.times do
+50.times do
   booking = Booking.new(
     target_name: Faker::JapaneseMedia::SwordArtOnline.real_name,
     target_location: Faker::Address.full_address,
