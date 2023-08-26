@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :assassin
+  has_one :assassin, foreign_key: 'assa_user_id'
   has_many :bookings, foreign_key: 'assa_user_id'
   has_many :bookings_as_assassin, through: :assassin, source: :bookings, foreign_key: 'assa_user_id'
 end
